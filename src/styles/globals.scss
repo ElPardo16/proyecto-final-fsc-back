@@ -4,3 +4,20 @@
   padding: 0;
   box-sizing: border-box;
 }
+.login-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.boton-login{
+  background: #94CA36;
+  border-radius: 15px;
+  text-align: center;
+  color:white;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
