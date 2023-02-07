@@ -1,42 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+$bg: #d9d9d9;
+$submit: #94ca36;
+$txt-s: rgba(0,0,0,.7);
 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
-
+.btn{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+}
+.submit{
+  background-color: $submit;
+}
 .login{
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  
+  height: 100vh;
+  display: grid;
 }
-.login-form{
+input{
+  height: 60px;
+}
+header{
+  height: 80px;
+  padding: 0 40px;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-}
-.button-login {
-  margin-top: 10px;
-  width: 10%;
-  height: 10%;
-  background: #94CA36;
-  border-radius: 5px ;
-  text-align: center;
-  color:white;
+  gap: 50px;
+  background-color: $bg;
+  h1{
+    font-size: 1.8rem;
+  }
+  nav{
+    position: relative;
+    margin-left: auto ;
+    align-self: stretch;
+    font-size: 1.4rem;
+    &:hover ul{
+      transform: scaleY(1);
+    }
+    div{
+      padding-left: 40px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 100%;
+      font-weight: bold;
+      cursor: pointer;
+      svg{
+        margin-top: 4px;
+      }
+    }
+    ul{
+      list-style: none;
+      width: max-content;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: $bg;
+      transform-origin: top;
+      transform: scaleY(0);
+      transition: transform .2s ease;
+      li{
+        padding: 20px 30px;
+        cursor: pointer;
+      }
+      li:hover{
+        background-color: black;
+        color: white;
+      }
+    }
+  }
 }
 .container{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-.login_img{
-  padding-top:20px ;
-  display:block;
+  width: 400px;
+  padding: 50px 20px;
   margin: auto;
-  padding-bottom: 30px;
-
+  display: grid;
+  place-items: center;
+  gap: 50px;
+  form{
+    display: grid;
+    gap: 20px;
+  }
+}
+.login-input{
+  position: relative;
+  svg{
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    margin-left: 15px;
+    color: $txt-s;
+  }
+  input{
+    font-size: 1.2rem;
+    padding: 10px 40px;
+  }
 }

@@ -1,7 +1,8 @@
+import Header from "../../components/Header";
+
 export default function index({data}) {
   return (
-    <div>{data && <p>{data.email}</p>}
-    {data && <p>{data.role}</p>}</div>
+    <Header data={data}/>
   )
 }
 export function getServerSideProps({req}){

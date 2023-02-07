@@ -1,13 +1,12 @@
 import Cookies from "js-cookie";
-import Layout from "../components/Layout";
 import Login from "../components/Login";
 
 export default function Home() {
  
   //console.log(Cookies.get())
   return (
-    <>
-      <button onClick={()=> {
+    <div className="login">
+      {/* <button onClick={()=> {
         Cookies.remove("role")
       }}>asdsa</button>
       <button onClick={async _ => {
@@ -34,10 +33,8 @@ export default function Home() {
           console.log(error)
         }
         
-      }}>log</button>
-      <Layout>
+      }}>log</button> */}
         <Login />
-      </Layout>
-    </>
+    </div>
   )
 }
