@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import Layout from "../components/Layout";
 import Login from "../components/Login";
 
 export default function Home() {
@@ -34,7 +35,9 @@ export default function Home() {
         }
         
       }}>log</button>
-      <Login />
+      <Layout>
+        <Login />
+      </Layout>
     </>
   )
 }

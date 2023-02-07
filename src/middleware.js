@@ -7,7 +7,7 @@ export async function middleware(req) {
   const jwt = req.cookies.get("token")?.value
   if (req.nextUrl.pathname.startsWith("/dashboard")) {
     if(!jwt){
-      return NextResponse.redirect(new URL('/', req.url))
+      return NextResponse.redirect(new URL('/', req.nextUrl.origin))
     }
     
     try {
@@ -21,13 +21,19 @@ export async function middleware(req) {
         }
       })
     } catch (error) {
-      console.log(error)
-      return NextResponse.redirect(new URL('/', req.url))
+      console.log(error)      
+      return NextResponse.redirect(new URL('/', req.nextUrl.origin))
     }
   }
-  if (req.nextUrl.pathname === "/" && req.cookies.get("token")) {
-    return NextResponse.redirect(new URL('/dashboard', req.url))
-  }
+  /* if (req.nextUrl.pathname === "/") {
+    console.log(req.nextUrl.origin)
+    
+    if(jwt){
+      console.log("llll")
+      return NextResponse.redirect(new URL('/dashboard', req.nextUrl.origin))
+    }
+    return NextResponse.next()
+  } */
 }
 
 // See "Matching Paths" below to learn more
