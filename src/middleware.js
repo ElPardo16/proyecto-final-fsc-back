@@ -25,15 +25,18 @@ export async function middleware(req) {
       return NextResponse.redirect(new URL('/', req.nextUrl.origin))
     }
   }
-  /* if (req.nextUrl.pathname === "/") {
-    console.log(req.nextUrl.origin)
-    
+  if (req.nextUrl.pathname === "/") {
+  
     if(jwt){
-      console.log("llll")
-      return NextResponse.redirect(new URL('/dashboard', req.nextUrl.origin))
+      try {
+        const verifyTk = await jwtVerify(jwt, new TextEncoder().encode(process.env.JWT_SECRET))
+        return NextResponse.redirect(new URL('/dashboard', req.nextUrl.origin))
+      } catch (error) {
+        return NextResponse.next()
+      }      
     }
     return NextResponse.next()
-  } */
+  }
 }
 
 // See "Matching Paths" below to learn more
