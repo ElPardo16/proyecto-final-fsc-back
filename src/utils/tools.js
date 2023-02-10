@@ -1,11 +1,12 @@
+import { read } from "xlsx"
+
 export async function getData(){
-    const response = await fetch("http://localhost:3000/api")
+    const response = await fetch("http://localhost:3000/api/collaborator")
     const json = await response.json()
-    return json.map(movie => {
-        const date = movie.date && movie.date.replaceAll("-","/")
-        return {
-          ...movie,
-          date 
-        }
-      })
+    return json
+}
+
+export async function readDB(file){
+    const workbook = read(file)
+    console.log(workbook)
 }
