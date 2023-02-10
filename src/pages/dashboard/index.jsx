@@ -1,4 +1,5 @@
 import Header from "../../components/Header";
+import Modal from "../../components/Modal";
 
 export default function index({ data }) {
   return (
@@ -10,6 +11,7 @@ export default function index({ data }) {
           <Card key={movie._id} movie={movie} fun={setMovies} />
         ))}
       </div> */}
+      <Modal/>
     </div>
   );
 }

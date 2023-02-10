@@ -11,7 +11,6 @@ export async function middleware(req) {
     
     try {
       const verifyTk = await jwtVerify(jwt, new TextEncoder().encode(process.env.JWT_SECRET))
-      console.log(verifyTk)
       const reqHeaders = new Headers(req.headers)
       reqHeaders.set("x-data", JSON.stringify(verifyTk.payload))
       return NextResponse.next({
@@ -20,7 +19,7 @@ export async function middleware(req) {
         }
       })
     } catch (error) {
-      console.log(error)      
+      console.log(`Error: ${error}`)      
       return NextResponse.redirect(new URL('/', req.nextUrl.origin))
     }
   }
