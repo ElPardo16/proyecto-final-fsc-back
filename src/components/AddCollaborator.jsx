@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdOutlineFileUpload } from "react-icons/md";
-import { read } from "xlsx";
+import { readDB } from "../utils/tools";
 
 export default function AddColaborator() {
-  const [drag, setDrag] = useState(false);
-  const toggleDrag = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDrag(!drag);
-  };
-  const readFile = async (e) => {
-    const file = e.target.files[0];
-    const data = await file.arrayBuffer();
-    const workbook = read(data);
-    console.log(workbook);
-  };
-  const dropFile = async (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    console.log("sadsa");
-
-    /* const file = e.dataTransfer.files[0]
+  const [drag, setDrag] = useState(false)
+  const toggleDrag = e => {
+    e.preventDefault()
+    e.stopPropagation()
+    setDrag(!drag)
+  }
+  const loadFile = async e => {
+    const file = e.target.files[0]
     const data = await file.arrayBuffer()
-    const workbook = read(data)
-    console.log({drag: true,...workbook}) */
-  };
+    readDB(data)
+  }
+  const dropFile = async e => {
+    e.stopPropagation()
+    e.preventDefault()    
+    const file = e.dataTransfer.files[0]
+    const data = await file.arrayBuffer()
+    readDB(data)
+    setDrag(!drag)
+  }
+  const onDragOver = e => {
+    e.preventDefault();
+  }
   const {
     register,
     handleSubmit,
@@ -436,14 +436,10 @@ export default function AddColaborator() {
           <MdOutlineFileUpload size={80} />
           <span>Sube o arrastra un excel</span>
         </div>
-
-        <input id="data" name="data" type="file" hidden onChange={readFile} />
-        <label
-          htmlFor="data"
-          onDragEnter={toggleDrag}
-          onDragLeave={toggleDrag}
-          onDrop={dropFile}
-        ></label>
+        
+        <input id="data" name="data" type="file" hidden onChange={loadFile} />
+        <label htmlFor="data" onDragEnter={toggleDrag} onDragOver={onDragOver} onDragLeave={toggleDrag} onDrop={dropFile}>
+        </label>
       </div>
     </div>
   );
