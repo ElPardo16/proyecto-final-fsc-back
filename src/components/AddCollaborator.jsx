@@ -31,67 +31,162 @@ export default function AddColaborator() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = (data) => console.log(data);
   //console.log(errors);
 
   return (
     <div className="add-c">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          type="number"
-          placeholder="Documento"
-          {...register("Documento", {
-            required: true,
-            max: 20,
-            min: 6,
-            maxLength: 20,
-            pattern: /[0-9]/i,
-          })}
-        />
-        <input
-          type="text"
-          placeholder="Primer Nombre "
-          {...register("Primer Nombre ", {
-            required: true,
-            max: 50,
-            min: 2,
-            maxLength: 50,
-            pattern: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
-          })}
-        />
-        <input
-          type="text"
-          placeholder="Segundo Nombre "
-          {...register("Segundo Nombre ", {
-            required: true,
-            max: 50,
-            min: 2,
-            maxLength: 49,
-            pattern: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
-          })}
-        />
-        <input
-          type="text"
-          placeholder="Primer Apellido"
-          {...register("Primer Apellido", {
-            required: true,
-            max: 20,
-            min: 2,
-            maxLength: 50,
-            pattern: /^[a-zA-Z] + [a-zA-Z] + $ /i,
-          })}
-        />
-        <input
-          type="text"
-          placeholder="Segundo Apellido"
-          {...register("Segundo Apellido", {
-            required: true,
-            max: 20,
-            min: 10,
-            maxLength: 49,
-            pattern: /^[a-zA-Z] + [a-zA-Z] + $ /i,
-          })}
-        />
+        <div className="doc">
+          <label htmlFor="doc">Documento</label>
+          <input
+            id="doc"
+            type="number"
+            name="documento"
+            placeholder="Documento"
+            {...register("Documento", {
+              required: {
+                value: true,
+                max: 20,
+                min: 6,
+                maxLength: 20,
+                message: "El campo es requerido",
+              },
+              pattern: {
+                value: /[0-9]/i,
+                message: "El formato no es correcto",
+              },
+            })}
+          />
+          {errors.documento && <span>{errors.documento.message}</span>}
+        </div>
+
+        <div>
+          <label htmlFor="nombre1">Primer Nombre</label>
+          <input
+            id="nombre1"
+            type="text"
+            name="PrimerNombre"
+            placeholder="Primer Nombre "
+            {...register("Primer Nombre ", {
+              required:{ 
+              value:true,
+              max: 50,
+              min: 2,
+              maxLength: 50,
+              message: "El campo es requerido",
+            },
+              pattern:{
+                value: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
+                message: "El formato no es correcto",
+              }
+            })}
+
+          />
+          {errors.PrimerNombre && <span>{errors.PrimerNombre.message}</span>}
+        </div>
+
+        
+        <div>
+          <label htmlFor="nombre2">Segundo Nombre</label>
+          <input
+            id="nombre2"
+            type="text"
+            name="SegundoNombre"
+            placeholder="Segundo Nombre"
+            {...register("Segundo Nombre ", {
+              required:{ 
+              value:true,
+              max: 50,
+              min: 2,
+              maxLength: 50,
+              message: "El campo es requerido",
+            },
+              pattern:{
+                value: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
+                message: "El formato no es correcto",
+              }
+            })}
+
+          />
+          {errors.SegundoNombre && <span>{errors.SegundoNombre.message}</span>}
+        </div>
+
+        
+        <div>
+          <label htmlFor="Apellido1">Primer Apellido</label>
+          <input
+            id="Apellido1"
+            type="text"
+            name="Primer Apellido"
+            placeholder="Primer Apellido"
+            {...register("Primer Apellido", {
+              required:{ 
+              value:true,
+              max: 50,
+              min: 2,
+              maxLength: 50,
+              message: "El campo es requerido",
+            },
+              pattern:{
+                value: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
+                message: "El formato no es correcto",
+              }
+            })}
+
+          />
+          {errors.PrimerApellido && <span>{errors.PrimerApellido.message}</span>}
+        </div>
+      
+        <div>
+          <label htmlFor="Apellido2">Segundo Apellido</label>
+          <input
+            id="Apellido2"
+            type="text"
+            name="Segundo Apellido"
+            placeholder="Segundo Apellido"
+            {...register("Segundo Apellido", {
+              required:{ 
+              value:true,
+              max: 50,
+              min: 2,
+              maxLength: 50,
+              message: "El campo es requerido",
+            },
+              pattern:{
+                value: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
+                message: "El formato no es correcto",
+              }
+            })}
+
+          />
+          {errors.SegundoApellido && <span>{errors.SegundoApellido.message}</span>}
+        </div>
+
+
+        <div className="edad">
+          <label htmlFor="age">Edad</label>
+          <input
+            id="age"
+            type="number"
+            name="Edad"
+            placeholder="Edad"
+            {...register("Edad", {
+              required: {
+                value: true,
+                max: 3,
+                min: 1,
+                maxLength: 4,
+                message: "El campo es requerido",
+              },
+              pattern: {
+                value: /^[0-9]+$/i,
+                message: "El formato no es correcto",
+              },
+            })}
+          />
+          {errors.Edad && <span>{errors.Edad.message}</span>}
+        </div>
         <input
           type="number"
           placeholder="Edad"
@@ -146,12 +241,19 @@ export default function AddColaborator() {
             pattern: /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
           })}
         />
+        <label htmlFor=""></label>
         <select {...register("Estado")}>
           <option value="Activo">Activo</option>
           <option value=" Retirado"> Retirado</option>
           <option value=" Incapacidad"> Incapacidad</option>
-          <option value=" Licencia de Maternidad"> Licencia de Maternidad</option>
-          <option value=" Licencia No Remunerada"> Licencia No Remunerada</option>
+          <option value=" Licencia de Maternidad">
+            {" "}
+            Licencia de Maternidad
+          </option>
+          <option value=" Licencia No Remunerada">
+            {" "}
+            Licencia No Remunerada
+          </option>
         </select>
         <input
           type="email"
@@ -331,7 +433,7 @@ export default function AddColaborator() {
       </form>
       <div className="file">
         <div className={`dragzone ${drag ? "drag" : ""} `}>
-          <MdOutlineFileUpload size={80}/>
+          <MdOutlineFileUpload size={80} />
           <span>Sube o arrastra un excel</span>
         </div>
         
@@ -340,6 +442,5 @@ export default function AddColaborator() {
         </label>
       </div>
     </div>
-  )
+  );
 }
-
