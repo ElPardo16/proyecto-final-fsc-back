@@ -14,7 +14,7 @@ export default function Header({ data }) {
     return (
         <header>
             <Image src="/img/logo.png" alt="logo" width={60} height={60} />
-            <h1 className='titulo-name'>¡Bienvenido, {role}</h1>
+            <h1 className='titulo-name'>¡Bienvenido, {role}!</h1>
             <nav>
                 <div>{email} <MdArrowDropDown size={20}/></div>
                 <ul>

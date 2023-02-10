@@ -1,5 +1,7 @@
 export default function Modal() {
   return (
-    <div>Modal</div>
+    <div>
+      <Colaborador/>
+    </div>
   )
 }
