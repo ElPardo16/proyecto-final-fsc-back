@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { FaUserCircle, FaLock } from "react-icons/fa";
 
+
 export default function Login() {
 	const router = useRouter()
 	const {
@@ -12,7 +13,9 @@ export default function Login() {
 		formState: { errors },
 	} = useForm();
 
-	const onSubmit = async _ => {
+	const onSubmit = async data => {
+    console.log(data)
+        const {email, password} = data
         try {
           const res = await fetch("http://localhost:5000/api/login",{
           method: "POST",
@@ -20,8 +23,8 @@ export default function Login() {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            email: "a@aa.com",
-            password: "1234"
+            email,
+            password
           })
         })
         if(res.status === 200){
