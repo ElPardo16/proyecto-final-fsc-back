@@ -31,8 +31,26 @@ export default function AddColaborator() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = data => console.log(data);
+  // const onSubmit = data => console.log(data);
   //console.log(errors);
+
+  const onSubmit = async data => {
+    console.log(data)
+    try {
+      const res = await fetch("http://localhost:5000/api/collaborator",{
+        method: 'POST',
+        headers:{
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      const json = await res.json()
+      console.log(json)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   return (
     <div className="add-c">
