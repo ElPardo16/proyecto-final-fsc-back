@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { readDB } from "../utils/tools";
@@ -36,6 +36,7 @@ export default function AddColaborator() {
 
   return (
     <div className="add-c">
+      <p>sdfds</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="number"
