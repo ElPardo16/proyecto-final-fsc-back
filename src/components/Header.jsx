@@ -1,26 +1,28 @@
+import Cookies from 'js-cookie';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 import React from 'react'
 import { MdArrowDropDown } from "react-icons/md";
 
-export default function Header() {
-  return (
-    <header>
-        <div className='header-logo'>
-            <img src="./img/logo.png" alt="logo" />
-            <h2 className='titulo-name'>¡Bienvenido, Admin!</h2>
-        </div>
-        <nav>
-            <ul className='nav'>
-                <li><a href="#">admin@fun.com <MdArrowDropDown /></a>
-                     <ul>
-                        <li><a href="#">Crear usuario</a></li>
-                        <li><a href="#">Cambiar contraseñas</a></li>
-                        <li><a href="#">Cerrar sesión</a></li>
-                     </ul>
-                </li>
-            </ul>
-
-        </nav>
-
-    </header>
-  )
+export default function Header({ data }) {
+    const router = useRouter()
+    const { email, role } = data
+    const logout = _ => {
+        Cookies.remove("token")
+        router.push("/")
+    }
+    return (
+        <header>
+            <Image src="/img/logo.png" alt="logo" width={60} height={60} />
+            <h1 className='titulo-name'>¡Bienvenido, {role}!</h1>
+            <nav>
+                <div>{email} <MdArrowDropDown size={20}/></div>
+                <ul>
+                    {role === "admin" && <><li>Crear usuario</li>
+                    <li>Cambiar contraseñas</li></>}
+                    <li onClick={logout}>Cerrar sesión</li>
+                </ul>
+            </nav>
+        </header>
+    )
 }

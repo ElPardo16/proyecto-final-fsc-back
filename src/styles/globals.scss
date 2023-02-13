@@ -1,78 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
-*{
+$bg: #d9d9d9;
+$submit: #94ca36;
+$txt-s: rgba(0, 0, 0, 0.7);
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-.login-form{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
-.boton-login{
-  background: #94CA36;
-  border-radius: 15px;
-  text-align: center;
-  color:white;
+.submit {
+  background-color: $submit;
 }
-.container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  
+.login {
+  height: 100vh;
+  display: grid;
 }
- 
-
-//----------Header--------
-
-header{
-  display: flex;
-  justify-content: space-between;
-  
-  padding: 10px;
-  background-color: #D9D9D9;
-}
-
-.header-logo{
-  display: flex;
-  align-items: center;
-}
-
-.header-logo img{
-  margin-right: 10px;
+input {
   height: 60px;
+}
+header {
+  height: 80px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 50px;
+  background-color: $bg;
+  h1 {
+    font-size: 1.8rem;
+  }
+  nav {
+    position: relative;
+    margin-left: auto;
+    align-self: stretch;
+    font-size: 1.4rem;
+    &:hover ul {
+      transform: scaleY(1);
+    }
+    div {
+      padding-left: 40px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 100%;
+      font-weight: bold;
+      cursor: pointer;
+      svg {
+        margin-top: 4px;
+      }
+    }
+    ul {
+      list-style: none;
+      width: max-content;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: $bg;
+      transform-origin: top;
+      transform: scaleY(0);
+      transition: transform 0.2s ease;
+      li {
+        padding: 20px 30px;
+        cursor: pointer;
+      }
+      li:hover {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+}
+.container {
+  width: 400px;
+  padding: 50px 20px;
+  margin: auto;
+  display: grid;
+  place-items: center;
+  gap: 50px;
+  form {
+    display: grid;
+    gap: 40px;
+  }
+}
+.login-input {
+  position: relative;
+  svg {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    margin-left: 15px;
+    color: $txt-s;
+  }
+  input {
+    font-size: 1.2rem;
+    padding: 10px 40px;
+  }
+  span {
+    position: absolute;
+    top: 105%;
+    left: 0;
+  }
+}
+.bg-modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $txt-s;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: 100vw;
+  background-color: $bg;
+  display: grid;
+  grid: min-content 1fr / 1fr;
+  header {
+    justify-content: center;
+    gap: 30px;
+    background-color: transparent;
+    height: 80px;
+  }
+  form {
+    /* display: grid; */
+
+    input:not(.btn), select {
+      height: 40px;
+      border-radius: 5px;
+      padding-left: 10px;
+      border-color: $txt-s;
+      
+    }
+  }
+  .file {
+    position: relative;
+    display: grid;
+    .dragzone {
+      border: 2px $txt-s solid;
+      border-radius: 20px;
+      padding: 20px;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      text-align: center;
+      gap: 20px;
+    }
+    label {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      z-index: 10;
+      cursor: pointer;
+      svg {
+        color: $txt-s;
+      }
+    }
+    .drag {
+      color: white;
+      border-style: dashed;
+      background-color: $submit;
+      svg {
+        color: white;
+      }
+    }
+  }
+}
+.add-c {
+  padding: 30px;
+  display: grid;
+  grid: 1fr / 80% 1fr;
+  gap: 20px;
+  min-height: calc(100% - 170px);
+
+  form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    overflow-y: scroll;
+    padding: 0 20px 30px ;
+    
+    .submit{
+      align-self:center ;
+      grid-column: span 2;
+
+    }
+  }
+
+}
+
+.add-i {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.obs{
+  grid-column: span 2;
   
-}
-li{
-  align-items: center;
-}
-.titulo-name{
-  margin-left: 100px;
-}
-.nav ul{
-  align-items: center;
-}
-
-ul{
-  list-style: none;
-}
-
-.nav li ul{
-  display: none;
-  position: absolute;
-
-}
-.nav li:hover > ul {
-  display: block;
-}
-.nav li a{
-  display: block;
-  padding: 10px 15px;
-  background-color: #D9D9D9;
-  color: black;
-  text-decoration: none;
-}
-.nav a:hover{
-  background-color: black;
-  color: #FFF;
 }
