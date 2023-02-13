@@ -1,5 +1,6 @@
 import { MdPersonAdd } from "react-icons/md";
-import AddColaborator from "./addCollaborator";
+import FormCollb from "./FormCollab";
+
 
 export default function Modal() {
   return (
@@ -9,7 +10,7 @@ export default function Modal() {
           <MdPersonAdd size={30}/>
           <h2>Agregar colaborador</h2>
         </header>
-        <AddColaborator/>
+        <FormCollb/>
       </div>
     </div>
   )

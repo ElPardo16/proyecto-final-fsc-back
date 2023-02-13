@@ -15,17 +15,14 @@ export default function Login() {
 
 	const onSubmit = async data => {
     console.log(data)
-        const {email, password} = data
+        // const {email, password} = data
         try {
           const res = await fetch("http://localhost:5000/api/login",{
           method: "POST",
           headers:{
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({
-            email,
-            password
-          })
+          body: JSON.stringify(data)
         })
         if(res.status === 200){
             const json = await res.json()
