@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 $bg: #d9d9d9;
 $submit: #94ca36;
-$txt-s: rgba(0,0,0,.7);
+$txt-s: rgba(0, 0, 0, 0.7);
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-.btn{
+.btn {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -19,17 +19,17 @@ $txt-s: rgba(0,0,0,.7);
   font-size: 1.2rem;
   cursor: pointer;
 }
-.submit{
+.submit {
   background-color: $submit;
 }
-.login{
+.login {
   height: 100vh;
   display: grid;
 }
-input{
+input {
   height: 60px;
 }
-header{
+header {
   height: 80px;
   padding: 0 40px;
   display: flex;
@@ -37,18 +37,18 @@ header{
   align-items: center;
   gap: 50px;
   background-color: $bg;
-  h1{
+  h1 {
     font-size: 1.8rem;
   }
-  nav{
+  nav {
     position: relative;
-    margin-left: auto ;
+    margin-left: auto;
     align-self: stretch;
     font-size: 1.4rem;
-    &:hover ul{
+    &:hover ul {
       transform: scaleY(1);
     }
-    div{
+    div {
       padding-left: 40px;
       display: flex;
       align-items: center;
@@ -56,11 +56,11 @@ header{
       height: 100%;
       font-weight: bold;
       cursor: pointer;
-      svg{
+      svg {
         margin-top: 4px;
       }
     }
-    ul{
+    ul {
       list-style: none;
       width: max-content;
       position: absolute;
@@ -69,50 +69,50 @@ header{
       background-color: $bg;
       transform-origin: top;
       transform: scaleY(0);
-      transition: transform .2s ease;
-      li{
+      transition: transform 0.2s ease;
+      li {
         padding: 20px 30px;
         cursor: pointer;
       }
-      li:hover{
+      li:hover {
         background-color: black;
         color: white;
       }
     }
   }
 }
-.container{
+.container {
   width: 400px;
   padding: 50px 20px;
   margin: auto;
   display: grid;
   place-items: center;
   gap: 50px;
-  form{
+  form {
     display: grid;
     gap: 40px;
   }
 }
-.login-input{
+.login-input {
   position: relative;
-  svg{
+  svg {
     position: absolute;
     inset: 0;
     margin: auto;
     margin-left: 15px;
     color: $txt-s;
   }
-  input{
+  input {
     font-size: 1.2rem;
     padding: 10px 40px;
   }
-  span{
+  span {
     position: absolute;
     top: 105%;
     left: 0;
   }
 }
-.bg-modal{
+.bg-modal {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -120,32 +120,35 @@ header{
   left: 0;
   background-color: $txt-s;
 }
-.modal{
+.modal {
   position: fixed;
   inset: 0;
   margin: auto;
-  width: 80vw;
-  height: 80vh;
+  width: 100vw;
   background-color: $bg;
-  border-radius: 20px;
   display: grid;
   grid: min-content 1fr / 1fr;
-  header{
+  header {
     justify-content: center;
     gap: 30px;
     background-color: transparent;
+    height: 80px;
   }
-  form{
+  form {
     /* display: grid; */
 
-    input{
+    input:not(.btn), select {
       height: 40px;
+      border-radius: 5px;
+      padding-left: 10px;
+      border-color: $txt-s;
+      
     }
   }
-  .file{
+  .file {
     position: relative;
     display: grid;
-    .dragzone{
+    .dragzone {
       border: 2px $txt-s solid;
       border-radius: 20px;
       padding: 20px;
@@ -155,30 +158,56 @@ header{
       text-align: center;
       gap: 20px;
     }
-    label{
+    label {
       position: absolute;
       inset: 0;
       margin: auto;
       z-index: 10;
       cursor: pointer;
-      svg{
+      svg {
         color: $txt-s;
       }
     }
-    .drag{
+    .drag {
       color: white;
       border-style: dashed;
       background-color: $submit;
-      svg{
+      svg {
         color: white;
       }
     }
   }
-  
 }
-.add-c{
+.add-c {
   padding: 30px;
   display: grid;
   grid: 1fr / 80% 1fr;
   gap: 20px;
+  min-height: calc(100% - 170px);
+
+  form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    overflow-y: scroll;
+    padding: 0 20px 30px ;
+    
+    .submit{
+      align-self:center ;
+      grid-column: span 2;
+
+    }
+  }
+
+}
+
+.add-i {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.obs{
+  grid-column: span 2;
+  
 }
