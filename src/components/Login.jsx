@@ -59,12 +59,12 @@ export default function Login() {
 							},
 							pattern: {
 								value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-								message: "El formato no es correcto",
+								message: "El formato no e{errors.email && <span>{errors.email.message}</span>}s correcto",
 							},
 						})}
 					/>
 
-					{errors.email && <span>{errors.email.message}</span>}
+					
 				</div>
 
 				<div className="login-input">
