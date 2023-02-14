@@ -211,8 +211,62 @@ header {
   grid-column: span 2;
   
 }
+ .table {
 
-//-------TABLE-------------
+
+  p{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+  }
+  div{
+    display: grid;
+    grid-column: span 2;
+    grid-template-columns: 1fr 150px;
+    padding: 10px 30px;
+    &:nth-child(2n + 1){background-color: $bg;}
+    &:first-of-type{background-color: $submit;}
+    place-items: center;
+  }
+  span{
+    text-align: center;
+  }
+  button{
+    display: grid;
+    
+  }
+ }
+
+
+
+//----------------Table Miguel-----------
+ .table {
+
+
+  p{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+  }
+  div{
+    display: grid;
+    grid-column: span 2;
+    grid-template-columns: 1fr 150px;
+    padding: 10px 30px;
+    &:nth-child(2n + 1){background-color: $bg;}
+    &:first-of-type{background-color: $submit;}
+    place-items: center;
+  }
+  span{
+    text-align: center;
+  }
+  button{
+    display: grid;
+    
+  }
+ }
+
+//-------TABLE Mardelys-------------
 .container-table{
    width: 90%;
    margin: auto;
