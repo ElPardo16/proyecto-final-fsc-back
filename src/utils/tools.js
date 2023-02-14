@@ -1,7 +1,7 @@
 import { read, readFile, utils } from "xlsx"
 
 export async function getData(){
-    const response = await fetch("http://localhost:3000/api/collaborator")
+    const response = await fetch("http://localhost:5000/api/collaborator")
     const json = await response.json()
     return json
 }
