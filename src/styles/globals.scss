@@ -5,308 +5,322 @@ $submit: #94ca36;
 $txt-s: rgba(0, 0, 0, 0.7);
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: "Poppins", sans-serif;
 }
 .btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  color: white;
-  font-size: 1.2rem;
-  cursor: pointer;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   font-weight: bold;
+   color: white;
+   font-size: 1.2rem;
+   cursor: pointer;
 }
 .submit {
-  background-color: $submit;
+   background-color: $submit;
 }
 .login {
-  height: 100vh;
-  display: grid;
+   height: 100vh;
+   display: grid;
 }
 input {
-  height: 60px;
+   height: 60px;
 }
 header {
-  height: 80px;
-  padding: 0 40px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 50px;
-  background-color: $bg;
-  h1 {
-    font-size: 1.8rem;
-  }
-  nav {
-    position: relative;
-    margin-left: auto;
-    align-self: stretch;
-    font-size: 1.4rem;
-    &:hover ul {
-      transform: scaleY(1);
-    }
-    div {
-      padding-left: 40px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      height: 100%;
-      font-weight: bold;
-      cursor: pointer;
-      svg {
-        margin-top: 4px;
+   height: 80px;
+   padding: 0 40px;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   gap: 50px;
+   background-color: $bg;
+   h1 {
+      font-size: 1.8rem;
+   }
+   nav {
+      position: relative;
+      margin-left: auto;
+      align-self: stretch;
+      font-size: 1.4rem;
+      &:hover ul {
+         transform: scaleY(1);
       }
-    }
-    ul {
-      list-style: none;
-      width: max-content;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background-color: $bg;
-      transform-origin: top;
-      transform: scaleY(0);
-      transition: transform 0.2s ease;
-      z-index: 10;
-      li {
-        padding: 20px 30px;
-        cursor: pointer;
+      div {
+         padding-left: 40px;
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         height: 100%;
+         font-weight: bold;
+         cursor: pointer;
+         svg {
+            margin-top: 4px;
+         }
       }
-      li:hover {
-        background-color: black;
-        color: white;
+      ul {
+         list-style: none;
+         width: max-content;
+         position: absolute;
+         top: 100%;
+         right: 0;
+         background-color: $bg;
+         transform-origin: top;
+         transform: scaleY(0);
+         transition: transform 0.2s ease;
+         z-index: 10;
+         li {
+            padding: 20px 30px;
+            cursor: pointer;
+         }
+         li:hover {
+            background-color: black;
+            color: white;
+         }
       }
-    }
-  }
+   }
 }
 .container {
-  width: 400px;
-  padding: 50px 20px;
-  margin: auto;
-  display: grid;
-  place-items: center;
-  gap: 50px;
-  form {
-    display: grid;
-    gap: 40px;
-  }
+   width: 400px;
+   padding: 50px 20px;
+   margin: auto;
+   display: grid;
+   place-items: center;
+   gap: 50px;
+   form {
+      display: grid;
+      gap: 40px;
+   }
 }
 .login-input {
-  position: relative;
-  svg {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    margin-left: 15px;
-    color: $txt-s;
-  }
-  input {
-    font-size: 1.2rem;
-    padding: 10px 40px;
-  }
-  span {
-    position: absolute;
-    top: 105%;
-    left: 0;
-  }
-}
-.bg-modal {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: $txt-s;
-}
-.modal {
-  position: fixed;
-  inset: 0;
-  margin: auto;
-  width: 100vw;
-  background-color: $bg;
-  display: grid;
-  grid: min-content 1fr / 1fr;
-  header {
-    justify-content: center;
-    gap: 30px;
-    background-color: transparent;
-    height: 80px;
-  }
-  form {
-    /* display: grid; */
-
-    input:not(.btn), select {
-      height: 40px;
-      border-radius: 5px;
-      padding-left: 10px;
-      border-color: $txt-s;
-      
-    }
-  }
-  .file {
-    position: relative;
-    display: grid;
-    .dragzone {
-      border: 2px $txt-s solid;
-      border-radius: 20px;
-      padding: 20px;
-      display: grid;
-      place-items: center;
-      align-content: center;
-      text-align: center;
-      gap: 20px;
-    }
-    label {
+   position: relative;
+   svg {
       position: absolute;
       inset: 0;
       margin: auto;
-      z-index: 10;
-      cursor: pointer;
-      svg {
-        color: $txt-s;
+      margin-left: 15px;
+      color: $txt-s;
+   }
+   input {
+      font-size: 1.2rem;
+      padding: 10px 40px;
+   }
+   span {
+      position: absolute;
+      top: 105%;
+      left: 0;
+   }
+}
+.bg-modal {
+   width: 100vw;
+   height: 100vh;
+   position: fixed;
+   top: 0;
+   left: 0;
+   background-color: $txt-s;
+}
+
+.modal {
+   position: fixed;
+   inset: 0;
+   margin: auto;
+   width: 100vw;
+   background-color: $bg;
+   display: grid;
+   grid: min-content 1fr / 1fr;
+   
+   header {
+      justify-content: center;
+      gap: 30px;
+      background-color: transparent;
+      height: 80px;
+   }
+   form {
+      /* display: grid; */
+
+      input:not(.btn),
+      select {
+         height: 40px;
+         border-radius: 5px;
+         padding-left: 10px;
+         border-color: $txt-s;
       }
-    }
-    .drag {
-      color: white;
-      border-style: dashed;
+   }
+   
+   .file {
+      position: relative;
+      display: grid;
+      .dragzone {
+         border: 2px $txt-s solid;
+         border-radius: 20px;
+         padding: 20px;
+         display: grid;
+         place-items: center;
+         align-content: center;
+         text-align: center;
+         gap: 20px;
+      }
+      label {
+         position: absolute;
+         inset: 0;
+         margin: auto;
+         z-index: 10;
+         cursor: pointer;
+         svg {
+            color: $txt-s;
+         }
+      }
+      .drag {
+         color: white;
+         border-style: dashed;
+         background-color: $submit;
+         svg {
+            color: white;
+         }
+      }
+   }
+}
+.close-modal {
+   background-color: rgb(196, 3, 3);
+   color: #fff;
+   border-radius: 5px;
+   position: fixed;
+   right: 4rem;
+   top: 2rem;
+   cursor: pointer;
+   &:hover {
       background-color: $submit;
-      svg {
-        color: white;
-      }
-    }
-  }
+   }
 }
 .add-c {
-  padding: 30px;
-  display: grid;
-  grid: 1fr / 80% 1fr;
-  gap: 20px;
-  min-height: calc(100% - 170px);
+   padding: 30px;
+   display: grid;
+   grid: 1fr / 80% 1fr;
+   gap: 20px;
+   min-height: calc(100% - 170px);
 
-  form {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    overflow-y: scroll;
-    padding: 0 20px 30px ;
-    
-    .submit{
-      align-self:center ;
-      grid-column: span 2;
+   form {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      overflow-y: scroll;
+      padding: 0 20px 30px;
 
-    }
-  }
-
+      .submit {
+         align-self: center;
+         grid-column: span 2;
+      }
+   }
 }
 
 .add-i {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
 }
 
-.obs{
-  grid-column: span 2;
-  
+.obs {
+   grid-column: span 2;
 }
- .table {
-
-
-  p{
-    text-align: center;
-    color: white;
-    font-weight: bold;
-  }
-  div{
-    display: grid;
-    grid-column: span 2;
-    grid-template-columns: 1fr 150px;
-    padding: 10px 30px;
-    &:nth-child(2n + 1){background-color: $bg;}
-    &:first-of-type{background-color: $submit;}
-    place-items: center;
-  }
-  span{
-    text-align: center;
-  }
-  button{
-    display: grid;
-    
-  }
- }
-
-.filters{
-  margin: auto;
-  width: 90%;
-  height: 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  select{
-    background-color: $bg;
-    font-size: 1.2rem;
-      padding: 0 10px;
-  }
-  .options{
-    display: grid;
-    gap: 5px;
-    font-weight: bold;
-    select{
-      width: 200px;
-      height: 40px;
-      border-radius: 5px;
-    }
-  }
-  .actions{
-    border-radius: 5px;
-    padding: 10px;
-    display: grid;
-    grid: 1fr /  repeat(2, min-content);
-    gap: 20px;
-    place-items: center;
-    cursor: pointer;
-    &:hover{
-      background-color: $bg;
-      outline: 1px solid black;
-    }
-  }
-  .search{
-    display: grid;
-    grid: 1fr / 200px min-content;
-    border: 2px solid black;
-    border-radius: 5px;
-    input{
-      border: none;
-      height: 50px;
-      padding: 0 10px;
-      font-size: 1.2rem;
-      &:focus{
-        outline: none;
+.table {
+   p {
+      text-align: center;
+      color: white;
+      font-weight: bold;
+   }
+   div {
+      display: grid;
+      grid-column: span 2;
+      grid-template-columns: 1fr 150px;
+      padding: 10px 30px;
+      &:nth-child(2n + 1) {
+         background-color: $bg;
       }
-    }
-    select{
-      border: none;
-      border-radius: 0;
-      border-left: 2px solid black;
-    }
-  }
+      &:first-of-type {
+         background-color: $submit;
+      }
+      place-items: center;
+   }
+   span {
+      text-align: center;
+   }
+   button {
+      display: grid;
+   }
+}
+
+.filters {
+   margin: auto;
+   width: 90%;
+   height: 100px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 20px;
+   select {
+      background-color: $bg;
+      font-size: 1.2rem;
+      padding: 0 10px;
+   }
+   .options {
+      display: grid;
+      gap: 5px;
+      font-weight: bold;
+      select {
+         width: 200px;
+         height: 40px;
+         border-radius: 5px;
+      }
+   }
+   .actions {
+      border-radius: 5px;
+      padding: 10px;
+      display: grid;
+      grid: 1fr / repeat(2, min-content);
+      gap: 20px;
+      place-items: center;
+      cursor: pointer;
+      &:hover {
+         background-color: $bg;
+         outline: 1px solid black;
+      }
+   }
+   .search {
+      display: grid;
+      grid: 1fr / 200px min-content;
+      border: 2px solid black;
+      border-radius: 5px;
+      input {
+         border: none;
+         height: 50px;
+         padding: 0 10px;
+         font-size: 1.2rem;
+         &:focus {
+            outline: none;
+         }
+      }
+      select {
+         border: none;
+         border-radius: 0;
+         border-left: 2px solid black;
+      }
+   }
 }
 //-------TABLE Mardelys-------------
-.container-table{
+.container-table {
    width: 90%;
    margin: auto;
 }
-.MuiDataGrid-columnHeaderTitle{
-  font-weight: bold;
+.MuiDataGrid-columnHeaderTitle {
+   font-weight: bold;
 }
-.MuiDataGrid-row:hover, .css-1e2bxag-MuiDataGrid-root .MuiDataGrid-row.Mui-hovered{
-  background-color: $submit !important;
-  color: white !important;
+.MuiDataGrid-row:hover,
+.css-1e2bxag-MuiDataGrid-root .MuiDataGrid-row.Mui-hovered {
+   background-color: $submit !important;
+   color: white !important;
 }
-.MuiDataGrid-row:nth-child(2n){
-  background: $bg;
+.MuiDataGrid-row:nth-child(2n) {
+   background: $bg;
 }
