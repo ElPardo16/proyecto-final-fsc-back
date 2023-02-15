@@ -1,8 +1,10 @@
 import Cookies from 'js-cookie';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import React from 'react'
+import React,{ useState } from 'react'
 import { MdArrowDropDown } from "react-icons/md";
+import AddUser from '../components/AddUser'
+import Recovery from '../components/Recovery'
 
 export default function Header({ data }) {
    const router = useRouter()

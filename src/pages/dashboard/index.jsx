@@ -1,13 +1,10 @@
 import Table from '../../components/Table'
 import Header from "../../components/Header";
-import Modal from "../../components/Modal";
 import { getData } from '../../utils/tools';
 import { MdAdd, MdOutlinePostAdd } from 'react-icons/md';
 import { useState, useRef } from 'react';
-
-
-
-
+import ModalCollb from '../../components/ModalCollb';
+import Modal from 'react-modal';
 
 Modal.setAppElement('#__next');
 export default function index({ data, people }) {
