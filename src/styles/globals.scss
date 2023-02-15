@@ -70,6 +70,7 @@ header {
       transform-origin: top;
       transform: scaleY(0);
       transition: transform 0.2s ease;
+      z-index: 10;
       li {
         padding: 20px 30px;
         cursor: pointer;
@@ -236,3 +237,76 @@ header {
     
   }
  }
+
+.filters{
+  margin: auto;
+  width: 90%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  select{
+    background-color: $bg;
+    font-size: 1.2rem;
+      padding: 0 10px;
+  }
+  .options{
+    display: grid;
+    gap: 5px;
+    font-weight: bold;
+    select{
+      width: 200px;
+      height: 40px;
+      border-radius: 5px;
+    }
+  }
+  .actions{
+    border-radius: 5px;
+    padding: 10px;
+    display: grid;
+    grid: 1fr /  repeat(2, min-content);
+    gap: 20px;
+    place-items: center;
+    cursor: pointer;
+    &:hover{
+      background-color: $bg;
+      outline: 1px solid black;
+    }
+  }
+  .search{
+    display: grid;
+    grid: 1fr / 200px min-content;
+    border: 2px solid black;
+    border-radius: 5px;
+    input{
+      border: none;
+      height: 50px;
+      padding: 0 10px;
+      font-size: 1.2rem;
+      &:focus{
+        outline: none;
+      }
+    }
+    select{
+      border: none;
+      border-radius: 0;
+      border-left: 2px solid black;
+    }
+  }
+}
+//-------TABLE Mardelys-------------
+.container-table{
+   width: 90%;
+   margin: auto;
+}
+.MuiDataGrid-columnHeaderTitle{
+  font-weight: bold;
+}
+.MuiDataGrid-row:hover, .css-1e2bxag-MuiDataGrid-root .MuiDataGrid-row.Mui-hovered{
+  background-color: $submit !important;
+  color: white !important;
+}
+.MuiDataGrid-row:nth-child(2n){
+  background: $bg;
+}
