@@ -1,10 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import Modal from "react-modal";
 
-Modal.setAppElement("#__next");
-
-export default function Recovery({ isOpen, onRequestClose }) {
+export default function Recovery() {
   const {
     register,
     handleSubmit,
@@ -20,7 +17,6 @@ export default function Recovery({ isOpen, onRequestClose }) {
 
   return (
     <>
-      <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="pss">
             {/* <label htmlFor="password"> Nueva contraseña</label> */}
@@ -60,12 +56,12 @@ export default function Recovery({ isOpen, onRequestClose }) {
 
           <div className="bpss">
             <button type="submit">Cambiar</button>
-            <button type="submit" onClick={onRequestClose}>
+            <button type="submit">
               Cancelar
             </button>
           </div>
         </form>
-      </Modal>
+     
     </>
   );
 }

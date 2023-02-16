@@ -29,11 +29,11 @@ export default function AddUser({ isOpen, onRequestClose }) {
 
     content:{
       width:"min-content",
-      inset:0,
+      inset: 0,
       margin:"auto",
       height:"min-content",
       padding: "30px",
-      
+      backgroundColor: "#d9d9d9"
     }
   }
 
@@ -45,8 +45,6 @@ export default function AddUser({ isOpen, onRequestClose }) {
           <MdPersonAdd size={30}/>
           <h2>Nuevo Usuario</h2>
         </header>
-        <div onClick={onRequestClose}><MdClose size={30} className="close-modal"  /></div>
-
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="usernew">
           {/* <label htmlFor="email">Email:</label> */}
@@ -98,15 +96,14 @@ export default function AddUser({ isOpen, onRequestClose }) {
         <div className="usernew">
           {/* <label htmlFor="role">Rol</label> */}
           <select {...register("role")} id="role" name="role" placeholder="Rol">
-            <option value="role">Rol</option>
             <option value="user">Usuario</option>
             <option value="admin">Administrador</option>
           </select>
         </div>
 
-        <div className="buttonnewuser">
-          <button type="submit">Agregar</button>
-          <button type="submit" onClick={onRequestClose}>
+        <div className="btns">
+          <button className="btn submit" type="submit">Agregar</button>
+          <button className="btn cancel" type="submit" onClick={onRequestClose}>
             Cancelar
           </button>
         </div>

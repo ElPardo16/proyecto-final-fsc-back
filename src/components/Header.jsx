@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import React,{ useState } from 'react'
 import { MdArrowDropDown } from "react-icons/md";
 import AddUser from '../components/AddUser'
-import Recovery from '../components/Recovery'
+import SendRecovery from './SendRecovery'
 
 export default function Header({ data }) {
    const router = useRouter()
@@ -37,7 +37,7 @@ export default function Header({ data }) {
                <AddUser isOpen={true} onRequestClose={handleModalClose} />
             )}
             {modalToShow === 'modalPassword' && (
-               <Recovery isOpen={true} onRequestClose={handleModalClose} />
+               <SendRecovery isOpen={true} onRequestClose={handleModalClose} />
             )}
          </nav>
       </header>
