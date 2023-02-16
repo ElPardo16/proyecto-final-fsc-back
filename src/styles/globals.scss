@@ -26,6 +26,10 @@ $txt-s: rgba(0, 0, 0, 0.7);
   height: 100vh;
   display: grid;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 input {
   height: 60px;
 }
@@ -160,6 +164,76 @@ header {
       gap: 20px;
     }
     label {
+      position: relative;
+      svg {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        margin-left: 15px;
+        color: $txt-s;
+      }
+      input {
+        font-size: 1.2rem;
+        padding: 10px 40px;
+      }
+      span {
+        position: absolute;
+        top: 105%;
+        left: 0;
+      }
+    }
+  }
+}
+.bg-modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $txt-s;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: 100vw;
+  background-color: $bg;
+  display: grid;
+  grid: min-content 1fr / 1fr;
+
+  header {
+    justify-content: center;
+    gap: 30px;
+    background-color: transparent;
+    height: 80px;
+  }
+  form {
+    /* display: grid; */
+
+    input:not(.btn),
+    select {
+      height: 40px;
+      border-radius: 5px;
+      padding-left: 10px;
+      border-color: $txt-s;
+    }
+  }
+
+  .file {
+    position: relative;
+    display: grid;
+    .dragzone {
+      border: 2px $txt-s solid;
+      border-radius: 20px;
+      padding: 20px;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      text-align: center;
+      gap: 20px;
+    }
+    label {
       position: absolute;
       inset: 0;
       margin: auto;
@@ -177,6 +251,18 @@ header {
         color: white;
       }
     }
+  }
+}
+.close-modal {
+  background-color: rgb(196, 3, 3);
+  color: #fff;
+  border-radius: 5px;
+  position: fixed;
+  right: 4rem;
+  top: 2rem;
+  cursor: pointer;
+  &:hover {
+    background-color: $submit;
   }
 }
 .add-c {
@@ -309,6 +395,3 @@ header {
 .MuiDataGrid-row:nth-child(2n) {
   background: $bg;
 }
-
-//----------Formulario addUser----------
-

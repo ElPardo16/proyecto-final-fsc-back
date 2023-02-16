@@ -1,15 +1,17 @@
-import { MdPersonAdd } from "react-icons/md";
+import { MdPersonAdd, MdClose } from "react-icons/md";
 import FormCollb from "./FormCollab";
 
 
-export default function Modal() {
+export default function ModalCollb({onClose}) {
+
   return (
-    <div className="bg-modal">
+    <div className="bg-modal" >
       <div className="modal">
         <header>
           <MdPersonAdd size={30}/>
           <h2>Agregar colaborador</h2>
         </header>
+        <div onClick={onClose}><MdClose size={30} className="close-modal"  /></div>
         <FormCollb/>
       </div>
     </div>
