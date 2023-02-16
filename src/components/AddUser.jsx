@@ -22,7 +22,7 @@ export default function AddUser({ isOpen, onRequestClose }) {
   };
 
   const style = {
-    
+
     overlay:{
       backgroundColor:"rgba(0,0,0,.7)"
     },
@@ -32,7 +32,7 @@ export default function AddUser({ isOpen, onRequestClose }) {
       inset: 0,
       margin:"auto",
       height:"min-content",
-      padding: "30px",
+      padding: "30px 50px",
       backgroundColor: "#d9d9d9"
     }
   }
@@ -47,7 +47,7 @@ export default function AddUser({ isOpen, onRequestClose }) {
         </header>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="usernew">
-          {/* <label htmlFor="email">Email:</label> */}
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
@@ -58,7 +58,7 @@ export default function AddUser({ isOpen, onRequestClose }) {
         </div>
 
         <div className="usernew">
-          {/* <label htmlFor="password">contraseña</label> */}
+          <label htmlFor="password">Contraseña</label>
           <input
             type="password"
             id="password"
@@ -74,7 +74,7 @@ export default function AddUser({ isOpen, onRequestClose }) {
         </div>
 
         <div className="usernew">
-          {/* <label htmlFor="password2">Confirmar Contraseña:</label> */}
+          <label htmlFor="password2">Confirmar Contraseña:</label>
           <input
             type="password"
             id="password2"
@@ -94,7 +94,7 @@ export default function AddUser({ isOpen, onRequestClose }) {
         </div>
 
         <div className="usernew">
-          {/* <label htmlFor="role">Rol</label> */}
+          <label htmlFor="role">Rol</label>
           <select {...register("role")} id="role" name="role" placeholder="Rol">
             <option value="user">Usuario</option>
             <option value="admin">Administrador</option>
