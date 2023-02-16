@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { readDB } from "../utils/tools";
 
-export default function FormCollb() {
+export default function AddColaborator() {
   const [drag, setDrag] = useState(false);
   const toggleDrag = (e) => {
     e.preventDefault();
@@ -31,23 +31,8 @@ export default function FormCollb() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = async (data) => {
-    console.log(data);
-    console.log(Object.keys(data).length);
-    try {
-      const res = await fetch("http://localhost:5000/api/collaborator", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const json = await res.json();
-      console.log(json);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const onSubmit = (data) => console.log(data);
+  //console.log(errors);
 
   return (
     <div className="add-c">
@@ -59,10 +44,11 @@ export default function FormCollb() {
             type="number"
             name="document"
             placeholder="Documento"
-            {...register("document", {
+            {...register("Documento", {
               required: {
                 value: true,
-                maxLength: 20,
+                max: 20,
+                min: 6,
                 maxLength: 20,
                 message: "El campo es requerido",
               },
@@ -76,45 +62,24 @@ export default function FormCollb() {
         </div>
 
         <div className="add-i">
-          <label htmlFor="dateECedula">Fecha Expedicion Cedula </label>
-          <input
-            id="dateECedula"
-            type="date"
-            name="dateECedula"
-            placeholder="Fecha Expedicion Cedula"
-            {...register("dateECedula", {
-              required: {
-                value: true,
-                maxLength: 20,
-                message: "El campo es requerido",
-              },
-              // pattern: {
-              //   value:
-              //     /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
-              //   message: "El formato no es correcto",
-              // },
-            })}
-          />
-          {errors.dateECedula && <span>{errors.dateECedula.message}</span>}
-        </div>
-
-        <div className="add-i">
           <label htmlFor="nombre1">Primer Nombre</label>
           <input
             id="nombre1"
             type="text"
             name="fName"
             placeholder="Primer Nombre "
-            {...register("fName", {
+            {...register("Primer Nombre ", {
               required: {
                 value: true,
+                max: 50,
+                min: 2,
                 maxLength: 50,
                 message: "El campo es requerido",
               },
-              // pattern: {
-              //   value: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
-              //   message: "El formato no es correcto",
-              // },
+              pattern: {
+                value: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
+                message: "El formato no es correcto",
+              },
             })}
           />
           {errors.fName && <span>{errors.fName.message}</span>}
@@ -127,16 +92,18 @@ export default function FormCollb() {
             type="text"
             name="sName"
             placeholder="Segundo Nombre"
-            {...register("sName", {
+            {...register("Segundo Nombre ", {
               required: {
                 value: true,
+                max: 50,
+                min: 2,
                 maxLength: 50,
                 message: "El campo es requerido",
               },
-              // pattern: {
-              //   value: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
-              //   message: "El formato no es correcto",
-              // },
+              pattern: {
+                value: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
+                message: "El formato no es correcto",
+              },
             })}
           />
           {errors.sName && <span>{errors.sName.message}</span>}
@@ -149,16 +116,18 @@ export default function FormCollb() {
             type="text"
             name="fLastName"
             placeholder="Primer Apellido"
-            {...register("fLastName", {
+            {...register("Primer Apellido", {
               required: {
                 value: true,
+                max: 50,
+                min: 2,
                 maxLength: 50,
                 message: "El campo es requerido",
               },
-              // pattern: {
-              //   value: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
-              //   message: "El formato no es correcto",
-              // },
+              pattern: {
+                value: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
+                message: "El formato no es correcto",
+              },
             })}
           />
           {errors.fLastName && <span>{errors.fLastName.message}</span>}
@@ -171,16 +140,18 @@ export default function FormCollb() {
             type="text"
             name="sLastName"
             placeholder="Segundo Apellido"
-            {...register("sLastName", {
+            {...register("Segundo Apellido", {
               required: {
                 value: true,
+                max: 50,
+                min: 2,
                 maxLength: 50,
                 message: "El campo es requerido",
               },
-              // pattern: {
-              //   value: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
-              //   message: "El formato no es correcto",
-              // },
+              pattern: {
+                value: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
+                message: "El formato no es correcto",
+              },
             })}
           />
           {errors.sLastName && <span>{errors.sLastName.message}</span>}
@@ -193,41 +164,21 @@ export default function FormCollb() {
             type="number"
             name="age"
             placeholder="Edad"
-            {...register("age", {
+            {...register("Edad", {
               required: {
                 value: true,
-                maxLength: 3,
+                max: 3,
+                min: 1,
+                maxLength: 4,
                 message: "El campo es requerido",
               },
-              // pattern: {
-              //   value: /^[0-9]+$/i,
-              //   message: "El formato no es correcto",
-              // },
+              pattern: {
+                value: /^[0-9]+$/i,
+                message: "El formato no es correcto",
+              },
             })}
           />
           {errors.age && <span>{errors.age.message}</span>}
-        </div>
-
-        <div className="add-i">
-          <label htmlFor="nac">Fecha de Nacimiento</label>
-          <input
-            id="nac"
-            name="birthdate"
-            type="date"
-            placeholder="Fecha de Nacimiento"
-            {...register("birthdate", {
-              required: {
-                value: true,
-                maxLength: 48,
-                message: "El campo es requerido",
-              },
-              // pattern: {
-              //   value: /^([012][1-9]|3[01])(\/)(0[1-9]|1[012])\2(\d{4})$/,
-              //   message: "El formato no es correcto",
-              // },
-            })}
-          />
-          {errors.birthdate && <span>{errors.birthdate.message}</span>}
         </div>
 
         <div className="add-i">
@@ -237,16 +188,18 @@ export default function FormCollb() {
             type="text"
             name="contract"
             placeholder="Tipo de Contrato "
-            {...register("contract", {
+            {...register("Tipo de Contrato ", {
               required: {
                 value: true,
+                max: 20,
+                min: 4,
                 maxLength: 50,
                 message: "El campo es requerido",
               },
-              // pattern: {
-              //   value: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
-              //   message: "El formato no es correcto",
-              // },
+              pattern: {
+                value: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
+                message: "El formato no es correcto",
+              },
             })}
           />
           {errors.age && <span>{errors.age.message}</span>}
@@ -260,19 +213,45 @@ export default function FormCollb() {
             name="campus"
             type="text"
             placeholder="Sede"
-            {...register("campus", {
+            {...register("Sede", {
               required: {
                 value: true,
+                max: 20,
+                min: 4,
                 maxLength: 50,
                 message: "El campo es requerido",
               },
-              // pattern: {
-              //   value: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
-              //   message: "El formato no es correcto",
-              // },
+              pattern: {
+                value: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
+                message: "El formato no es correcto",
+              },
             })}
           />
           {errors.campus && <span>{errors.campus.message}</span>}
+        </div>
+
+        <div className="add-i">
+          <label htmlFor="nac">Fecha de Nacimiento</label>
+          <input
+            id="nac"
+            name="birthdate"
+            type="date"
+            placeholder="Fecha de Nacimiento"
+            {...register("Fecha de Nacimiento", {
+              required: {
+                value: true,
+                max: 20,
+                min: 4,
+                maxLength: 48,
+                message: "El campo es requerido",
+              },
+              pattern: {
+                value: /^([012][1-9]|3[01])(\/)(0[1-9]|1[012])\2(\d{4})$/,
+                message: "El formato no es correcto",
+              },
+            })}
+          />
+          {errors.birthdate && <span>{errors.birthdate.message}</span>}
         </div>
 
         <div className="add-i">
@@ -282,16 +261,18 @@ export default function FormCollb() {
             name="position"
             type="text"
             placeholder="Cargo"
-            {...register("position", {
+            {...register("Cargo", {
               required: {
                 value: true,
+                max: 20,
+                min: 5,
                 maxLength: 50,
                 message: "El campo es requerido",
               },
-              // pattern: {
-              //   value: /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
-              //   message: "El formato no es correcto",
-              // },
+              pattern: {
+                value: /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
+                message: "El formato no es correcto",
+              },
             })}
           />
           {errors.position && <span>{errors.position.message}</span>}
@@ -299,14 +280,14 @@ export default function FormCollb() {
 
         <div className="add-i">
           <label htmlFor="Estado">Estado</label>
-          <select {...register("state")} id="estado" name="state">
+          <select {...register("Estado")} id="estado" name="state">
             <option value="Activo">Activo</option>
-            <option value="Retirado">Retirado</option>
-            <option value="Incapacidad">Incapacidad</option>
-            <option value="Licencia de Maternidad">
+            <option value=" Retirado"> Retirado</option>
+            <option value=" Incapacidad"> Incapacidad</option>
+            <option value=" Licencia de Maternidad">
               Licencia de Maternidad
             </option>
-            <option value="Licencia No Remunerada">
+            <option value=" Licencia No Remunerada">
               Licencia No Remunerada
             </option>
           </select>
@@ -319,9 +300,11 @@ export default function FormCollb() {
             name="email"
             type="email"
             placeholder="Correo"
-            {...register("email", {
+            {...register("Correo", {
               required: {
                 value: true,
+                max: 50,
+                min: 6,
                 maxLength: 50,
                 message: "El campo es requerido",
               },
@@ -336,10 +319,10 @@ export default function FormCollb() {
 
         <div className="add-i">
           <label htmlFor="transit">Transito</label>
-          <select {...register("transit")} id="transit" name="transit">
-            <option value="No">No</option>
-            <option value="Retirado">Retirado</option>
-            <option value="Si">Si</option>
+          <select {...register("Transito")} id="transit" name="transit">
+            <option value="No ">No </option>
+            <option value=" Retirado"> Retirado</option>
+            <option value=" Si"> Si</option>
           </select>
         </div>
 
@@ -350,7 +333,7 @@ export default function FormCollb() {
             name="PS"
             type="number"
             placeholder="Consecutivo PS"
-            {...register("PS", { required: true, maxLength: 4 })}
+            {...register("Consecutivo PS", { required: true, max: 4, min: 0 })}
           />
         </div>
 
@@ -361,9 +344,10 @@ export default function FormCollb() {
             name="OYL"
             type="number"
             placeholder="Consecutivo OYL"
-            {...register("OYL", {
+            {...register("Consecutivo OYL", {
               required: true,
-              maxLength: 4,
+              max: 4,
+              min: 0,
             })}
           />
           {errors.OYL && <span>{errors.OYL.message}</span>}
@@ -376,32 +360,45 @@ export default function FormCollb() {
             name="ICBF"
             type="number"
             placeholder="Contrato ICBF"
-            {...register("ICBF", {
+            {...register("Contrato ICBF", {
               required: true,
-              maxLength: 15,
-              // pattern: /^[0-9]+$/i,
+              max: 15,
+              min: 6,
+              pattern: /^[0-9]+$/i,
             })}
           />
         </div>
 
         <div className="add-i">
-          <label htmlFor="modality">Modalidad</label>
-          <select {...register("modality")} id="modality" name="modality">
-            <option value="Desarrollo Infantil Medio Familiar">
-              Desarrollo Infantil Medio Familiar
-            </option>
-            <option value="Institucional Centro Desarrollo Infantil">
-              Institucional Centro Desarrollo Infantil
-            </option>
+          <label htmlFor="Genero">Genero</label>
+          <select {...register("Genero")} id="Genero" name="gen">
+            <option value="Femenino">Femenino</option>
+            <option value=" Masculino"> Masculino</option>
           </select>
         </div>
 
         <div className="add-i">
-          <label htmlFor="Genero">Genero</label>
-          <select {...register("gen")} id="Genero" name="gen">
-            <option value="Femenino">Femenino</option>
-            <option value="Masculino">Masculino</option>
-          </select>
+          <label htmlFor="dateECedula">Fecha Expedicion Cedula </label>
+          <input
+            id="dateECedula"
+            type="number"
+            placeholder="Fecha Expedicion Cedula"
+            {...register("Fecha Expedicion Cedula", {
+              required: {
+                value: true,
+                name: "dateECedula",
+                max: 20,
+                min: 10,
+                message: "El campo es requerido",
+              },
+              pattern: {
+                value:
+                  /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
+                message: "El formato no es correcto",
+              },
+            })}
+          />
+          {errors.dateECedula && <span>{errors.dateECedula.message}</span>}
         </div>
 
         <div className="add-i">
@@ -411,9 +408,10 @@ export default function FormCollb() {
             name="locality"
             type="text"
             placeholder="Localidad"
-            {...register("locality", {
+            {...register("Localidad", {
               required: true,
-              maxLength: 20,
+              max: 20,
+              min: 5,
               message: "El campo es requerido",
             })}
           />
@@ -426,7 +424,7 @@ export default function FormCollb() {
             name="neighborhood"
             type="text"
             placeholder="Barrio "
-            {...register("neighborhood", { required: true, maxLength: 20 })}
+            {...register("Barrio ", { required: true, max: 20, min: 5 })}
           />
         </div>
 
@@ -437,7 +435,7 @@ export default function FormCollb() {
             name="adress"
             type="text"
             placeholder="Direccion"
-            {...register("adress", { required: true, maxLength: 90 })}
+            {...register("Direccion", { required: true, max: 20, min: 5 })}
           />
         </div>
 
@@ -448,10 +446,10 @@ export default function FormCollb() {
             name="telP"
             type="text"
             placeholder="Telefono Principal"
-            {...register("telP", {
+            {...register("Telefono Principal", {
               required: true,
-              maxLength: 10,
-              // pattern: /^\d{10}$/i,
+              max: 10,
+              pattern: /^\d{10}$/i,
             })}
           />
         </div>
@@ -463,9 +461,9 @@ export default function FormCollb() {
             name="telS"
             type="number"
             placeholder="Telefono Secundario "
-            {...register("telS", {
+            {...register("Telefono Secundario ", {
               required: true,
-              // pattern: /^\d{10}$/i,
+              pattern: /^\d{10}$/i,
             })}
           />
         </div>
@@ -477,10 +475,11 @@ export default function FormCollb() {
             name="salaryL"
             type="text"
             placeholder="Salario en Letras "
-            {...register("salaryL", {
+            {...register("Salario en Letras ", {
               required: true,
-              maxLength: 20,
-              // pattern: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
+              max: 20,
+              min: 6,
+              pattern: /^ [a-zA-Z] + [a-zA-Z] + $ /i,
             })}
           />
         </div>
@@ -492,10 +491,11 @@ export default function FormCollb() {
             name="salaryN"
             type="number"
             placeholder="Salario en Numero"
-            {...register("salaryN", {
+            {...register("Salario en Numero", {
               required: true,
-              maxLength: 20,
-              // pattern: /^\d*\.\d+$/i,
+              max: 20,
+              min: 10,
+              pattern: /^\d*\.\d+$/i,
             })}
           />
         </div>
@@ -507,10 +507,10 @@ export default function FormCollb() {
             name="dateIICBF"
             type="date"
             placeholder="Fecha Inicio ICBF"
-            {...register("dateIICBF", {
+            {...register("Fecha Inicio ICBF", {
               required: true,
-              // pattern:
-              //   /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
+              pattern:
+                /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
             })}
           />
         </div>
@@ -520,12 +520,12 @@ export default function FormCollb() {
           <input
             id="fsc"
             name="dateIFSC"
-            type="date"
+            type="number"
             placeholder="Fecha Inicio FSC"
-            {...register("dateIFSC", {
+            {...register("Fecha Inicio FSC", {
               required: true,
-              // pattern:
-              //   /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
+              pattern:
+                /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
             })}
           />
         </div>
@@ -537,10 +537,10 @@ export default function FormCollb() {
             name="newDateI"
             type="date"
             placeholder=" Nueva Fecha De Inicio"
-            {...register("newDateI", {
+            {...register(" Nueva Fecha De Inicio", {
               required: true,
-              // pattern:
-              //   /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
+              pattern:
+                /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
             })}
           />
         </div>
@@ -549,13 +549,13 @@ export default function FormCollb() {
           <label htmlFor="date">Fecha Retiro</label>
           <input
             id="dateR"
-            name="dateR"
+            name=" dateR"
             type="date"
-            placeholder="Fecha Retiro"
-            {...register("dateR", {
+            placeholder=" Fecha Retiro"
+            {...register(" Fecha Retiro", {
               required: true,
-              // pattern:
-              //   /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
+              pattern:
+                /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
             })}
           />
         </div>
@@ -569,8 +569,10 @@ export default function FormCollb() {
             placeholder="EPS"
             {...register("EPS", {
               required: true,
+              max: 20,
+              min: 4,
               maxLength: 50,
-              // pattern: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
+              pattern: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
             })}
           />
         </div>
@@ -581,11 +583,13 @@ export default function FormCollb() {
             id="fp"
             name="FDP"
             type="text"
-            placeholder="Fondo De Pensiones"
-            {...register("FDP", {
+            placeholder=" Fondo De Pensiones"
+            {...register(" Fondo De Pensiones", {
               required: true,
+              max: 20,
+              min: 4,
               maxLength: 50,
-              // pattern: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
+              pattern: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
             })}
           />
         </div>
@@ -593,28 +597,29 @@ export default function FormCollb() {
           <label htmlFor="arl">ARL</label>
           <input
             id="arl"
-            name="ARL"
+            name=" ARL"
             type="text"
             placeholder="ARL"
             {...register("ARL", {
               required: true,
+              max: 20,
+              min: 4,
               maxLength: 50,
-              // pattern: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
+              pattern: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
             })}
           />
         </div>
 
-        <div className="add-i obs">
+        <div className="add-i">
           <label htmlFor="">Observaciones</label>
           <textarea
-            rows={5}
             id="obs"
             name="obs"
-            {...register("obs", { required: true })}
+            {...register("Observaciones ", { required: true })}
           />
         </div>
 
-        <input className="submit btn" type="submit" />
+        <input  className="submit btn" type="submit" />
       </form>
 
       <div className="file">

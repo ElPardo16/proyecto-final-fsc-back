@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
-import AddUser from '../components/AddUser'
-import Recovery from '../components/Recovery'
-
-
+import  {useState} from "react";
+import AddUser from "../components/addUser";
+import Recovery from "../components/Recovery";
+import SendRecovery from "../components/SendRecovery";
 
 export default function pruebas() {
    
