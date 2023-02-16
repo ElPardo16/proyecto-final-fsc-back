@@ -1,6 +1,9 @@
+import { red } from "@mui/material/colors";
+import { height, padding } from "@mui/system";
 import React from "react";
 import { useForm } from "react-hook-form";
 import Modal from "react-modal";
+import { MdPersonAdd, MdClose } from "react-icons/md";
 
 Modal.setAppElement("#__next");
 
@@ -18,8 +21,32 @@ export default function AddUser({ isOpen, onRequestClose }) {
     console.log(data);
   };
 
+  const style = {
+    
+    overlay:{
+      backgroundColor:"rgba(0,0,0,.7)"
+    },
+
+    content:{
+      width:"min-content",
+      inset:0,
+      margin:"auto",
+      height:"min-content",
+      padding: "30px",
+      
+    }
+  }
+
   return (
-    <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
+    <Modal isOpen={isOpen} onRequestClose={onRequestClose} style={style}>
+      
+      <div className="modal">
+        <header>
+          <MdPersonAdd size={30}/>
+          <h2>Nuevo Usuario</h2>
+        </header>
+        <div onClick={onRequestClose}><MdClose size={30} className="close-modal"  /></div>
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="usernew">
           {/* <label htmlFor="email">Email:</label> */}
@@ -84,6 +111,7 @@ export default function AddUser({ isOpen, onRequestClose }) {
           </button>
         </div>
       </form>
+      </div>
     </Modal>
   );
 }
