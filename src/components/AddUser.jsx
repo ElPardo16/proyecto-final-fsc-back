@@ -1,77 +1,86 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-export default function App() {
+function AddUser() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
+  const password = React.useRef({});
+  password.current = watch("password", "");
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
+      
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="add-p">
-        <label htmlFor="email">email</label>
+      <div className="usernew">
+        {/* <label htmlFor="email">Email:</label> */}
         <input
-          id="email"
-          name="email"
           type="email"
+          id="email"
           placeholder="Email"
-          {...register("email", {
-            required: true,
-            pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-          })}
+          {...register("email", { required: true })}
         />
-        {errors.email && <span>{errors.email.message}</span>}
+        {errors.email && <span>Este campo es obligatorio</span>}
       </div>
 
-      <div className="add-p">
-        <label htmlFor="pss">Contraseña</label>
+      <div className="usernew">
+        {/* <label htmlFor="password">contraseña</label> */}
         <input
-          id="pss"
-          name="password"
           type="password"
+          id="password"
           placeholder="Contraseña"
-          {...register("password", {
-            required: true,
-            pattern: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/i,
-          })}
+          {...register("password", { required: true, minLength: 8 })}
         />
-        {errors.password && <span>{errors.password.message}</span>}
+        {errors.password && errors.password.type === "required" && (
+          <span>Este campo es obligatorio</span>
+        )}
+        {errors.password && errors.password.type === "minLength" && (
+          <span>La contraseña debe tener al menos 8 caracteres</span>
+        )}
       </div>
 
-      <div className="add-p">
-        <label htmlFor="pssc">Confirmar Contraseña</label>
+      <div className="usernew">
+        {/* <label htmlFor="password2">Confirmar Contraseña:</label> */}
         <input
-          id="pssc"
-          name="passwordv"
           type="password"
-          placeholder="password"
-          {...register("passwordv", {
+          id="password2"
+          placeholder="Confirmar Contraseña"
+          {...register("password2", {
             required: true,
-            pattern: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/i,
             validate: (value) =>
-              value === password.current || "The passwords do not match",
+              value === password.current || "las contraseñas no coinciden",
           })}
         />
-        {errors.passwordv && <span>{errors.passwordv.message}</span>}
+        {errors.password2 && errors.password2.type === "required" && (
+          <span>Este campo es obligatorio</span>
+        )}
+        {errors.password2 && errors.password2.type === "validate" && (
+          <span>{errors.password2.message}</span>
+        )}
       </div>
 
-      <div className="add-p">
-        <label htmlFor="rol">Rol</label>
-        <select
-          {...register(" role", { required: true })}
-          id="rol"
-          name=" role"
-        >
-          <option value="Usuario, Administrador">Usuario,Administrador</option>
-        </select>
+      <div className="usernew">
+        
+          {/* <label htmlFor="role">Rol</label> */}
+          <select {...register("role")} id="role" name="role" placeholder="Rol">
+            <option value="role">Rol</option>
+            <option value="user">Usuario</option>
+            <option value="admin">Administrador</option>
+          </select>
       </div>
-
-      <button className="btn submit">Agregar</button>
-      <button className="btn submit">Cancelar</button>
+      
+      <div className="buttonnewuser">
+        <button type="submit">Agregar</button>
+        <button type="submit">Cancelar</button>
+      </div>
     </form>
   );
 }
+
+export default AddUser;

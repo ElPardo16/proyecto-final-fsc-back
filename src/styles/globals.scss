@@ -138,12 +138,12 @@ header {
   form {
     /* display: grid; */
 
-    input:not(.btn), select {
+    input:not(.btn),
+    select {
       height: 40px;
       border-radius: 5px;
       padding-left: 10px;
       border-color: $txt-s;
-      
     }
   }
   .file {
@@ -191,15 +191,13 @@ header {
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
     overflow-y: scroll;
-    padding: 0 20px 30px ;
-    
-    .submit{
-      align-self:center ;
-      grid-column: span 2;
+    padding: 0 20px 30px;
 
+    .submit {
+      align-self: center;
+      grid-column: span 2;
     }
   }
-
 }
 
 .add-i {
@@ -208,37 +206,37 @@ header {
   gap: 10px;
 }
 
-.obs{
+.obs {
   grid-column: span 2;
-  
 }
- .table {
-
-
-  p{
+.table {
+  p {
     text-align: center;
     color: white;
     font-weight: bold;
   }
-  div{
+  div {
     display: grid;
     grid-column: span 2;
     grid-template-columns: 1fr 150px;
     padding: 10px 30px;
-    &:nth-child(2n + 1){background-color: $bg;}
-    &:first-of-type{background-color: $submit;}
+    &:nth-child(2n + 1) {
+      background-color: $bg;
+    }
+    &:first-of-type {
+      background-color: $submit;
+    }
     place-items: center;
   }
-  span{
+  span {
     text-align: center;
   }
-  button{
+  button {
     display: grid;
-    
   }
- }
+}
 
-.filters{
+.filters {
   margin: auto;
   width: 90%;
   height: 100px;
@@ -246,49 +244,49 @@ header {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  select{
+  select {
     background-color: $bg;
     font-size: 1.2rem;
-      padding: 0 10px;
+    padding: 0 10px;
   }
-  .options{
+  .options {
     display: grid;
     gap: 5px;
     font-weight: bold;
-    select{
+    select {
       width: 200px;
       height: 40px;
       border-radius: 5px;
     }
   }
-  .actions{
+  .actions {
     border-radius: 5px;
     padding: 10px;
     display: grid;
-    grid: 1fr /  repeat(2, min-content);
+    grid: 1fr / repeat(2, min-content);
     gap: 20px;
     place-items: center;
     cursor: pointer;
-    &:hover{
+    &:hover {
       background-color: $bg;
       outline: 1px solid black;
     }
   }
-  .search{
+  .search {
     display: grid;
     grid: 1fr / 200px min-content;
     border: 2px solid black;
     border-radius: 5px;
-    input{
+    input {
       border: none;
       height: 50px;
       padding: 0 10px;
       font-size: 1.2rem;
-      &:focus{
+      &:focus {
         outline: none;
       }
     }
-    select{
+    select {
       border: none;
       border-radius: 0;
       border-left: 2px solid black;
@@ -296,17 +294,21 @@ header {
   }
 }
 //-------TABLE Mardelys-------------
-.container-table{
-   width: 90%;
-   margin: auto;
+.container-table {
+  width: 90%;
+  margin: auto;
 }
-.MuiDataGrid-columnHeaderTitle{
+.MuiDataGrid-columnHeaderTitle {
   font-weight: bold;
 }
-.MuiDataGrid-row:hover, .css-1e2bxag-MuiDataGrid-root .MuiDataGrid-row.Mui-hovered{
+.MuiDataGrid-row:hover,
+.css-1e2bxag-MuiDataGrid-root .MuiDataGrid-row.Mui-hovered {
   background-color: $submit !important;
   color: white !important;
 }
-.MuiDataGrid-row:nth-child(2n){
+.MuiDataGrid-row:nth-child(2n) {
   background: $bg;
 }
+
+//----------Formulario addUser----------
+
