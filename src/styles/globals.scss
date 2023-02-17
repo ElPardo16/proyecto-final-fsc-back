@@ -339,6 +339,38 @@ header {
     }
   }
 }
+
+.certification{
+  display: flex;
+  height: calc(100vh - 80px);
+  align-items: center;
+  justify-content: center;
+  gap: 200px;
+  iframe{
+    height: 80vh;
+    width: 600px;
+  }
+  .btncert{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  button{
+    width: 340px;
+    height: 124px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    font-size: 32px;
+  }
+  button:first-child{
+    background-color: #94ca36;
+  }
+  button:last-child{
+    background-color: #18006C;
+  }
+}
+
 //-------TABLE Mardelys-------------
 .container-table {
   width: 90%;
