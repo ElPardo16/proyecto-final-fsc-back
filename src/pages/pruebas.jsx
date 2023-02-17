@@ -1,8 +1,10 @@
-import React from 'react'
-import SendRecovery from '../components/SendRecovery'
+// import React from 'react'
+// import Certification from '../components/Certification'
+// // import SendRecovery from '../components/SendRecovery'
 
-export default function pruebas() {
-  return (
-    <SendRecovery/>
-  )
-}
+// export default function pruebas() {
+
+//   return (
+//     <Certification/>
+//   )
+// }
