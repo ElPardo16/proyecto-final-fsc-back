@@ -46,23 +46,23 @@ export default function FormCollb() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = async data => {
-    console.log(data)
-    console.log(Object.keys(data).length)
+  const onSubmit = async (data) => {
+    console.log(data);
+    console.log(Object.keys(data).length);
     try {
-      const res = await fetch("http://localhost:5000/api/collaborator",{
-        method: 'POST',
-        headers:{
-          "Content-Type": "application/json"
+      const res = await fetch("http://localhost:5000/api/collaborator", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(data)
-      })
-      const json = await res.json()
-      console.log(json)
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+      console.log(json);
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <div className="add-c">
@@ -290,8 +290,6 @@ export default function FormCollb() {
           {errors.campus && <span>{errors.campus.message}</span>}
         </div>
 
-        
-
         <div className="add-i">
           <label htmlFor="cargo">Cargo</label>
           <input
@@ -402,14 +400,24 @@ export default function FormCollb() {
         </div>
 
         <div className="add-i">
+          <label htmlFor="modality">Modalidad</label>
+          <select {...register("modality")} id="modality" name="modality">
+            <option value="Desarrollo Infantil Medio Familiar">
+              Desarrollo Infantil Medio Familiar
+            </option>
+            <option value="Institucional Centro Desarrollo Infantil">
+              Institucional Centro Desarrollo Infantil
+            </option>
+          </select>
+        </div>
+
+        <div className="add-i">
           <label htmlFor="Genero">Genero</label>
           <select {...register("gen")} id="Genero" name="gen">
             <option value="Femenino">Femenino</option>
             <option value="Masculino">Masculino</option>
           </select>
         </div>
-
-        
 
         <div className="add-i">
           <label htmlFor="locality">Localidad</label>
@@ -444,7 +452,7 @@ export default function FormCollb() {
             name="adress"
             type="text"
             placeholder="Direccion"
-            {...register("adress", { required: true, maxLength: 90})}
+            {...register("adress", { required: true, maxLength: 90 })}
           />
         </div>
 
@@ -613,7 +621,8 @@ export default function FormCollb() {
 
         <div className="add-i obs">
           <label htmlFor="">Observaciones</label>
-          <textarea rows={5}
+          <textarea
+            rows={5}
             id="obs"
             name="obs"
             {...register("obs", { required: true })}
