@@ -212,7 +212,7 @@ export default function Table({ people }) {
 
    return (
       <div className='container-table'>
-         <Box sx={{ height: 500, width: '100%' }}>
+         <Box sx={{ height:'80vh', width: '100%' }}>
             <DataGrid
                rows={rows}//base de datos reemplace rows con la data
                columns={columns}
