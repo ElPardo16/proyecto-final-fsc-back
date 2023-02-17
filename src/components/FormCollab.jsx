@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdOutlineFileUpload } from "react-icons/md";
+import Swal from "sweetalert2";
 import { readDB } from "../utils/tools";
+
 
 export default function FormCollb() {
   const [drag, setDrag] = useState(false);
@@ -12,8 +14,21 @@ export default function FormCollb() {
   };
   const loadFile = async (e) => {
     const file = e.target.files[0];
-    const data = await file.arrayBuffer();
+    Swal.fire({
+      position: 'center',
+      title: 'Cargando',
+      showConfirmButton: false,
+    })
+    const data = await file.arrayBuffer();//alert
     readDB(data);
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Cargado Satisfactoriamente',
+      showConfirmButton: false,
+      timer: 2500
+    })
+   //cerrar modal
   };
   const dropFile = async (e) => {
     e.stopPropagation();

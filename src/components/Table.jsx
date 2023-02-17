@@ -1,8 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
+import Button from '@mui/material/Button';
 
 const columns = [
+
    {
       field: 'document', headerName: 'Documento', width: 150,
    },
@@ -113,6 +115,29 @@ const columns = [
    {
       field: 'obs', headerName: 'Observaciones', width: 300,
    },
+   {
+      field: 'actions', headerName: 'Acciones', width: 200,
+      cellClassName: (params) =>
+         params.field === 'actions' ? 'class-actions' : '',
+      renderCell: (params) => {
+         return (
+            <div>
+               <Button
+                  onClick={() => console.log(`Editar: ${params.row.id}`)}
+               >
+                  Editar
+               </Button>
+               <Button
+                  onClick={() => console.log(`Eliminar: ${params.row.id}`)}
+               >
+                  Eliminar
+               </Button>
+            </div>)
+      }
+
+   },
+
+
 ];
 
 export default function Table({ people }) {
@@ -157,6 +182,8 @@ export default function Table({ people }) {
          obs
       }
    })
+
+
    return (
       <div className='container-table'>
          <Box sx={{ height: 500, width: '100%' }}>
@@ -168,6 +195,8 @@ export default function Table({ people }) {
                disableColumnMenu={true}
                disableColumnReorder={true}
                disableSelectionOnClick
+               initialState={{ pinnedColumns: { right: ['actions'] } }}
+
             //experimentalFeatures={{ newEditingApi: true }} editable
 
             />
