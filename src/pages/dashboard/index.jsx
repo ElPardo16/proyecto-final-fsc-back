@@ -1,6 +1,6 @@
 import Table from "../../components/Table";
 import Header from "../../components/Header";
-import { getData } from "../../utils/tools";
+import { getData, writeExcel } from "../../utils/tools";
 import { MdAdd, MdOutlinePostAdd }from "react-icons/md";
 import { useState, useRef } from "react";
 import ModalCollb from "../../components/ModalCollb";
@@ -70,6 +70,9 @@ export default function Dashboard({ data, people }) {
     setInputType(searchOptRef.current.value === "name" ? "text" : "number");
     filterData();
   };
+  const genExcel = _ => {
+   writeExcel(listPeople)
+  }
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function openModal() {
@@ -115,7 +118,7 @@ export default function Dashboard({ data, people }) {
         >
           <ModalCollb onClose={closeModal} />
         </Modal>
-        <div className="actions">
+        <div className="actions" onClick={genExcel}>
           <MdOutlinePostAdd size={40} />
           <span>Exportar datos</span>
         </div>
