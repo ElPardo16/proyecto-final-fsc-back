@@ -1,8 +1,13 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
-import Button from '@mui/material/Button';
+import { useRouter } from 'next/router';
+import { MdMode, MdPictureAsPdf } from 'react-icons/md';
 
+
+
+export default function Table({ people }) {
+   const router = useRouter();
 const columns = [
 
    {
@@ -48,6 +53,9 @@ const columns = [
    },
    {
       field: 'state', headerName: 'Estado', width: 110,
+   },
+   {
+      field: 'modality', headerName: 'Modalidad', width: 110,
    },
    {
       field: 'email', headerName: 'Correo', width: 200,
@@ -122,16 +130,35 @@ const columns = [
       renderCell: (params) => {
          return (
             <div>
-               <Button
-                  onClick={() => console.log(`Editar: ${params.row.id}`)}
-               >
-                  Editar
-               </Button>
-               <Button
-                  onClick={() => console.log(`Eliminar: ${params.row.id}`)}
-               >
-                  Eliminar
-               </Button>
+               <MdMode size={40} onClick={() => console.log(`Eliminar: ${params.row.id}`)} />
+
+               <MdPictureAsPdf size={40} onClick={async _ => {
+                  try {
+                     const json = await fetch('http://localhost:5000/api/cert', {
+                     method: 'POST',
+                     headers: {
+                        "Content-Type": "application/json"
+                     },
+                     body: JSON.stringify({
+                        name: params.row.fullName,
+                        cc: params.row.document,
+                        modality: params.row.modality,
+                        contract: params.row.contract,
+                        cargo: params.row.position,
+                        time: `${params.row.dateIFSC} hasta ${params.row.dateR ?? new Date().toJSON().slice(0,10).replace(/-/g,'/')}.`,
+                        sletras: params.row.salaryL,
+                        snumeros: params.row.salaryN,
+                     })
+                     
+                  })
+                  .then(res => res.json())
+                  console.log(json)
+                  router.push('/certification')
+                  } catch (error) {
+                     console.log(error)
+                  }
+                  
+               }} />
             </div>)
       }
 
@@ -140,9 +167,8 @@ const columns = [
 
 ];
 
-export default function Table({ people }) {
    const rows = people.map(({ _id, document, fName, sName, fLastName, sLastName, age, contract, campus,
-      birthdate, position, state, email, transit, PS, OYL, ICBF, gen, dateECedula, locality,
+      birthdate, position, state,modality, email, transit, PS, OYL, ICBF, gen, dateECedula, locality,
       neighborhood, adress, telP, telS, salaryL, salaryN, dateIICBF, dateIFSC, newDateI, dateR,
       EPS, FDP, ARL, obs }) => {
       return {
@@ -158,6 +184,7 @@ export default function Table({ people }) {
          birthdate,
          position,
          state,
+         modality,
          email,
          transit,
          PS,

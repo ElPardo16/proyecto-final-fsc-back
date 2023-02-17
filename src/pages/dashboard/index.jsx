@@ -1,13 +1,13 @@
 import Table from "../../components/Table";
 import Header from "../../components/Header";
 import { getData } from "../../utils/tools";
-import { MdAdd, MdOutlinePostAdd } from "react-icons/md";
+import { MdAdd, MdOutlinePostAdd }from "react-icons/md";
 import { useState, useRef } from "react";
 import ModalCollb from "../../components/ModalCollb";
 import Modal from "react-modal";
 
 Modal.setAppElement("#__next");
-export default function index({ data, people }) {
+export default function Dashboard({ data, people }) {
   const posRef = useRef(null);
   const orderRef = useRef(null);
   const searchOptRef = useRef(null);
