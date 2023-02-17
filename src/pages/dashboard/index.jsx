@@ -26,7 +26,7 @@ export default function Dashboard({ data, people }) {
     },
   };
 
-  const filterData = (_) => {
+  const filterData = _ => {
     let filterPeople = [...people];
     switch (orderRef.current.value) {
       case "1":
@@ -65,7 +65,7 @@ export default function Dashboard({ data, people }) {
     }
     setListPeople(filterPeople);
   };
-  const resetSearch = (_) => {
+  const resetSearch = _ => {
     search.value = "";
     setInputType(searchOptRef.current.value === "name" ? "text" : "number");
     filterData();
