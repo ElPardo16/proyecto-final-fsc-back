@@ -79,10 +79,10 @@ export default function Login() {
 								value: true,
 								message: "El campo es requerido",
 							},
-							/* pattern: {
-								value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
-								message: "La contraseña debe tener al menos 8 caracteres, ser alfanumerica letras mayusculas minusculas y numeros",
-							}, */
+							// pattern: {
+							// 	value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+							// 	message: "La contraseña debe tener al menos 8 caracteres, ser alfanumerica letras mayusculas minusculas y numeros",
+							// }, 
 						})}
 					/>
 					{errors.password && <span>{errors.password.message}</span>}

@@ -47,6 +47,13 @@ export default function FormCollb() {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Cargado Satisfactoriamente',
+      showConfirmButton: false,
+      timer: 2500
+    })
     console.log(data);
     console.log(Object.keys(data).length);
     try {
@@ -645,7 +652,8 @@ export default function FormCollb() {
           onDragOver={onDragOver}
           onDragLeave={toggleDrag}
           onDrop={dropFile}
-        ></label>
+        >
+        </label>
       </div>
     </div>
   );
