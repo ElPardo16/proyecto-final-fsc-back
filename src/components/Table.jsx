@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import MaterialReactTable from 'material-react-table';
 import { useRouter } from 'next/router';
 import { MdMode, MdPictureAsPdf } from 'react-icons/md';
+import { display } from '@mui/system';
 
 
 
@@ -120,47 +121,46 @@ const columns =  useMemo(
       accessorKey: 'obs', header: 'Observaciones', width: 300,
    },
    {
-      accessorKey: 'actions', header: 'Acciones', width: 200,
-       muiTableBodyCellCopyButtonProps: () => ({
-         className: 'style-actions',
+      accessorKey: 'actions', header: <p className='actions' style={{textAlign: 'center', display:'grid', placeItems: 'center', width: 150, }}>Acciones</p>, width: 100,
+      muiTableBodyCellProps: () => ({
+         className: 'actions',
          
        }),
-      Cell: (params) => {
+      Cell: (params) => {                                                                                                                                                                                            
          return (
             <div>
                <MdMode size={40} onClick={() => console.log(`Eliminar: ${params.row.id}`)} />
 
-               <MdPictureAsPdf size={40} onClick={async _ => {
-                  try {
-                     const json = await fetch('http://localhost:5000/api/cert', {
-                     method: 'POST',
-                     headers: {
-                        "Content-Type": "application/json"
-                     },
-                     body: JSON.stringify({
-                        name: params.row.fullName,
-                        cc: params.row.document,
-                        modality: params.row.modality,
-                        contract: params.row.contract,
-                        cargo: params.row.position,
-                        time: `${params.row.dateIFSC} hasta ${params.row.dateR ?? new Date().toJSON().slice(0,10).replace(/-/g,'/')}.`,
-                        sletras: params.row.salaryL,
-                        snumeros: params.row.salaryN,
-                     })
-                     
-                  })
-                  .then(res => res.json())
-                  console.log(json)
-                  router.push('/certification')
-                  } catch (error) {
-                     console.log(error)
-                  }
-                  
-               }} />
-            </div>)
-      }
+                  <MdPictureAsPdf size={40} onClick={async _ => {
+                     try {
+                        const json = await fetch('http://localhost:5000/api/cert', {
+                           method: 'POST',
+                           headers: {
+                              "Content-Type": "application/json"
+                           },
+                           body: JSON.stringify({
+                              name: `${params.row.fName || ''} ${params.row.sName || ''} ${params.row.fLastName || ''} ${params.row.sLastName || ''}`,
+                              cc: params.row.document,
+                              modality: params.row.modality,
+                              contract: params.row.contract,
+                              cargo: params.row.position,
+                              time: `${params.row.dateIFSC} hasta ${params.row.dateR ?? new Date().toJSON().slice(0, 10).replace(/-/g, '/')}.`,
+                              sletras: params.row.salaryL,
+                              snumeros: params.row.salaryN,
+                           })
 
-   },
+                        }).then(res => res.json())
+                        console.log(json)
+                        router.push('/certification')
+                     } catch (error) {
+                        console.log(error)
+                     }
+
+                  }} />
+               </div>)
+         }
+
+      },
 
 
 ],
@@ -168,7 +168,7 @@ const columns =  useMemo(
 );
 
    const rows = people.map(({ _id, document, fName, sName, fLastName, sLastName, age, contract, campus,
-      birthdate, position, state,modality, email, transit, PS, OYL, ICBF, gen, dateECedula, locality,
+      birthdate, position, state, modality, email, transit, PS, OYL, ICBF, gen, dateECedula, locality,
       neighborhood, adress, telP, telS, salaryL, salaryN, dateIICBF, dateIFSC, newDateI, dateR,
       EPS, FDP, ARL, obs }) => {
       return {

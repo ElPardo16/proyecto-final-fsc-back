@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React,{ useState } from 'react'
 import { MdArrowDropDown } from "react-icons/md";
@@ -24,7 +25,7 @@ export default function Header({ data }) {
    };
    return (
       <header>
-         <Image src="/img/logo.png" alt="logo" width={60} height={60} />
+         <Link href="/dashboard"><Image src="/img/logo.png" alt="logo" width={60} height={60} /></Link>
          <h1 className='titulo-name'>¡Bienvenido, {role}!</h1>
          <nav>
             <div>{email} <MdArrowDropDown size={20} /></div>

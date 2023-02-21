@@ -14,6 +14,7 @@
     "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.8",
     "@mui/x-data-grid": "^5.17.23",
+    "@mui/x-data-grid-pro": "^5.17.24",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
     "fs": "^0.0.1-security",
