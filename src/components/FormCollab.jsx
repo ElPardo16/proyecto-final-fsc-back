@@ -160,6 +160,42 @@ export default function FormCollb() {
     "FONDO PASIVO SOCIAL FERROCARR",
   ];
 
+  const nombrePension = [
+
+    'PROTECCION',
+    'PORVENIR',
+    'BBVA HORIZONTE',
+    'COLPENSIONES',
+    'SANTANDER',
+    'COLFONDOS',
+    'SKANDIA',
+    'CAXDAC-CAJA DE PREV. SOCIAL DE',
+    'FONPRECON-FONDO DEL CONGRESO',
+    'CAPRECOM-CAJA DE PREVISION SOC',
+    'PENSIONES DE ANTIOQUIA',
+    'CAJANAL-CAJA NACIONAL DE PREVI',
+    'CAJA DE PREV. SOC. DE UNICAUCA',
+    'ING PENSIONES Y CESANTIAS',
+    'PERSONA PENSIONADA - NO REQUIERE COTIZACIÓN A PENSACIÓN',
+
+  ];
+
+  const nombreArl = [
+'A.R.L. Seguros de Vida Colpatria S.A.',
+'Compañía de Seguros Bolívar S.A.',
+'Seguros de Vida Aurora',
+'ARP Alfa',
+'Liberty Seguros de Vida S.A.',
+'Positiva Compañía de Seguros',
+'Colmena Riesgos Profesionales',
+'ARL Sura',
+'La Equidad Seguros de Vida',
+'Mapfre Colombia Vida Seguros S.A',
+
+  ];
+
+  
+
   return (
     <div className="add-c">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -298,6 +334,29 @@ export default function FormCollb() {
         </div>
 
         <div className="add-i">
+          <label htmlFor="nac">Fecha de Nacimiento</label>
+          <input
+            id="nac"
+            name="birthdate"
+            type="date"
+            placeholder="Fecha de Nacimiento"
+            {...register("birthdate", {
+              required: {
+                value: true,
+                maxLength: 48,
+                message: "El campo es requerido",
+              },
+              // pattern: {
+              //   value: /^([012][1-9]|3[01])(\/)(0[1-9]|1[012])\2(\d{4})$/,
+              //   message: "El formato no es correcto",
+              // },
+            })}
+          />
+          {errors.birthdate && <span>{errors.birthdate.message}</span>}
+        </div>
+
+
+        <div className="add-i">
           <label htmlFor="age">Edad</label>
           <input
             id="age"
@@ -319,27 +378,7 @@ export default function FormCollb() {
           {errors.age && <span>{errors.age.message}</span>}
         </div>
 
-        <div className="add-i">
-          <label htmlFor="nac">Fecha de Nacimiento</label>
-          <input
-            id="nac"
-            name="birthdate"
-            type="date"
-            placeholder="Fecha de Nacimiento"
-            {...register("birthdate", {
-              required: {
-                value: true,
-                maxLength: 48,
-                message: "El campo es requerido",
-              },
-              // pattern: {
-              //   value: /^([012][1-9]|3[01])(\/)(0[1-9]|1[012])\2(\d{4})$/,
-              //   message: "El formato no es correcto",
-              // },
-            })}
-          />
-          {errors.birthdate && <span>{errors.birthdate.message}</span>}
-        </div>
+        
 
         <div className="add-i">
           <label htmlFor="contract">Tipo de Contrato</label>
@@ -689,65 +728,18 @@ export default function FormCollb() {
         <div className="add-i">
           <label htmlFor="FDP">Fondo De Pensiones</label>
           <select {...register("FDP")} id="FDP" name="FDP" placeholder="FDP">
-            <option value="PROTECCION">PROTECCION</option>
-            <option value="PORVENIR">PORVENIR</option>
-            <option value="BBVA HORIZONTE">BBVA HORIZONTE</option>
-            <option value="COLPENSIONES">COLPENSIONES</option>
-            <option value="SANTANDER">SANTANDER</option>
-            <option value="COLFONDOS">COLFONDOS</option>
-            <option value="SKANDIA">SKANDIA</option>
-            <option value="CAXDAC-CAJA DE PREV. SOCIAL DE">
-              CAXDAC-CAJA DE PREV. SOCIAL DE
-            </option>
-            <option value="FONPRECON-FONDO DEL CONGRESO">
-              FONPRECON-FONDO DEL CONGRESO
-            </option>
-            <option value="CAPRECOM-CAJA DE PREVISION SOC">
-              CAPRECOM-CAJA DE PREVISION SOC
-            </option>
-            <option value="PENSIONES DE ANTIOQUIA">
-              PENSIONES DE ANTIOQUIA
-            </option>
-            <option value="CAJANAL-CAJA NACIONAL DE PREVI">
-              CAJANAL-CAJA NACIONAL DE PREVI
-            </option>
-            <option value="CAJA DE PREV. SOC. DE UNICAUCA">
-              CAJA DE PREV. SOC. DE UNICAUCA
-            </option>
-            <option value="ING PENSIONES Y CESANTIAS">
-              ING PENSIONES Y CESANTIAS
-            </option>
-            <option value="NO REQUIERE COTIZACIÓN A PENSACIÓN">
-              PERSONA PENSIONADA - NO REQUIERE COTIZACIÓN A PENSACIÓN
-            </option>
+          {nombrePension.map((nombrePension) => (
+              <option value={nombrePension}>{nombrePension}</option>
+            ))}
           </select>
         </div>
 
         <div className="add-i">
           <label htmlFor="arl">ARL</label>
           <select {...register("ARL")} id="arl" name="ARL" placeholder="ARL">
-            <option value="A.R.L. Seguros de Vida Colpatria S.A.">
-              A.R.L. Seguros de Vida Colpatria S.A.
-            </option>
-            <option value="Compañía de Seguros Bolívar S.A.">
-              Compañía de Seguros Bolívar S.A.
-            </option>
-            <option value="Seguros de Vida Aurora">
-              Seguros de Vida Aurora
-            </option>
-            <option value="ARP Alfa">ARP Alfa</option>
-            <option value="Liberty Seguros de Vida S.A.">
-              Liberty Seguros de Vida S.A.
-            </option>
-            <option value="Positiva Compañía de Seguros">
-              Pompañía de Seguros
-            </option>
-            <option value="Colmena Riesgos Profesionales">
-              Colmena Riesgos Profesionales
-            </option>
-            <option value="ARL Sura">ARL Sura</option>
-            <option value="EquidadSeguros">La Equidad Seguros de Vida</option>
-            <option value="Mapfre">Mapfre Colombia Vida Seguros S.A</option>
+          {nombreArl.map((nombreArl) => (
+              <option value={nombreArl}>{nombreArl}</option>
+            ))}
           </select>
         </div>
 
