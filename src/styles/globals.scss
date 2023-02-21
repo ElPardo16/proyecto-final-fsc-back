@@ -205,11 +205,11 @@ header {
    .file {
       position:relative;
       display: grid;
-      border: 2px solid;
-      border-radius: 10px;
+      /* border: 2px solid;
+      border-radius: 10px; */
 
       .dragzone {
-        //  border: 2px $txt-s solid;
+         border: 2px $txt-s solid;
          border-radius: 20px;
          padding: 20px;
          display: grid;
@@ -218,11 +218,22 @@ header {
          text-align: center;
          gap: 20px;
       }
+      .drag {
+         color: white;
+         border-style: dashed;
+         background-color: $submit;
+         svg {
+           color: white;
+         }
+       }
 
       label {
-         position: relative;
+         position: absolute;
         //  background-color: #aa3d3d;
-
+         inset: 0;
+         margin: auto;
+         cursor: pointer;
+         z-index: 20;
          svg {
             position: absolute;
             inset: 0;
@@ -230,7 +241,6 @@ header {
             margin-left: 15px;
             color: $txt-s;
          }
-
          input {
             font-size: 1.2rem;
             padding: 10px 40px;
