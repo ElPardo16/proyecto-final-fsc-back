@@ -71,15 +71,17 @@ export default function FormCollb() {
     }
   };
 
-  const fecha = new Date ("1990/01/02")
-  console.log(fecha.getFullYear())
-
-
-  function calculate_age(dob) { 
-    var diff_ms = Date.now() - dob.getTime();
-    var age_dt = new Date(diff_ms); 
   
-    return Math.abs(age_dt.getUTCFullYear()  - 1970);
+  
+
+
+  function calculate_age(e) {
+    const dob = e.target.value
+    const fecha = new Date (dob) 
+    const diff_ms = Date.now() - fecha.getTime();
+    const age_dt = new Date(diff_ms); 
+  
+    age.value = Math.abs(age_dt.getUTCFullYear()  - 1970);
 }
   const nombresEps = [
     "ALIANSALUD",
@@ -349,8 +351,9 @@ export default function FormCollb() {
             id="nac"
             name="birthdate"
             type="date"
-            placeholder="Fecha de Nacimiento"
+            placeholder="Fecha de Nacimiento"    
             {...register("birthdate", {
+              onChange:calculate_age,
               required: {
                 value: true,
                 maxLength: 48,
@@ -374,6 +377,7 @@ export default function FormCollb() {
             name="age"
             placeholder="Edad"
             {...register("age", {
+              disabled: true,
               required: {
                 value: true,
                 maxLength: 3,
