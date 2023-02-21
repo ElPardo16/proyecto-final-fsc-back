@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 export async function middleware(req) {
   /* return NextResponse.redirect(new URL('/about-2', request.url)) */
   const jwt = req.cookies.get("token")?.value
-  if (req.nextUrl.pathname.startsWith("/dashboard")) {
+  if (req.nextUrl.pathname.startsWith("/dashboard") || req.nextUrl.pathname.startsWith("/certification")) {
     if(!jwt){
       return NextResponse.redirect(new URL('/', req.nextUrl.origin))
     }

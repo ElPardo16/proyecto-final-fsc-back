@@ -17,7 +17,7 @@ export default function Login() {
     console.log(data)
         // const {email, password} = data
         try {
-          const res = await fetch("http://localhost:5000/api/login",{
+          const res = await fetch("http://127.0.0.1:5000/api/login",{
           method: "POST",
           headers:{
             "Content-Type": "application/json"
@@ -59,12 +59,12 @@ export default function Login() {
 							},
 							pattern: {
 								value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-								message: "El formato no es correcto",
+								message: "El formato no e{errors.email && <span>{errors.email.message}</span>}s correcto",
 							},
 						})}
 					/>
 
-					{errors.email && <span>{errors.email.message}</span>}
+					
 				</div>
 
 				<div className="login-input">
@@ -79,10 +79,10 @@ export default function Login() {
 								value: true,
 								message: "El campo es requerido",
 							},
-							/* pattern: {
-								value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
-								message: "La contraseña debe tener al menos 8 caracteres, ser alfanumerica letras mayusculas minusculas y numeros",
-							}, */
+							// pattern: {
+							// 	value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+							// 	message: "La contraseña debe tener al menos 8 caracteres, ser alfanumerica letras mayusculas minusculas y numeros",
+							// }, 
 						})}
 					/>
 					{errors.password && <span>{errors.password.message}</span>}
