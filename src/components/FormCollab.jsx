@@ -47,7 +47,18 @@ export default function FormCollb() {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
+
+  const fecha = new Date ("1990/01/02")
+  console.log(fecha.getFullYear())
+
+
+  function calculate_age(dob) { 
+    var diff_ms = Date.now() - dob.getTime();
+    var age_dt = new Date(diff_ms); 
+  
+    return Math.abs(age_dt.getUTCFullYear()  - 1970);
+}
 
   return (
     <div className="add-c">
