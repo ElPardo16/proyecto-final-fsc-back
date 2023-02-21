@@ -38,17 +38,21 @@ export default function FormCollb() {
     readDB(data);
     setDrag(!drag);
   };
+
   const onDragOver = (e) => {
     e.preventDefault();
   };
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  
   const onSubmit = async (data) => {
     console.log(data);
     console.log(Object.keys(data).length);
+   
     try {
       const res = await fetch("http://localhost:5000/api/collaborator", {
         method: "POST",
@@ -57,7 +61,10 @@ export default function FormCollb() {
         },
         body: JSON.stringify(data),
       });
+     
+     
       const json = await res.json();
+    
       console.log(json);
     } catch (error) {
       console.log(error);
