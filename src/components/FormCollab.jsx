@@ -4,7 +4,6 @@ import { MdOutlineFileUpload } from "react-icons/md";
 import Swal from "sweetalert2";
 import { readDB } from "../utils/tools";
 
-
 export default function FormCollb() {
   const [drag, setDrag] = useState(false);
   const toggleDrag = (e) => {
@@ -15,20 +14,20 @@ export default function FormCollb() {
   const loadFile = async (e) => {
     const file = e.target.files[0];
     Swal.fire({
-      position: 'center',
-      title: 'Cargando',
+      position: "center",
+      title: "Cargando",
       showConfirmButton: false,
-    })
-    const data = await file.arrayBuffer();//alert
+    });
+    const data = await file.arrayBuffer(); //alert
     readDB(data);
     Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Cargado Satisfactoriamente',
+      position: "center",
+      icon: "success",
+      title: "Cargado Satisfactoriamente",
       showConfirmButton: false,
-      timer: 2500
-    })
-   //cerrar modal
+      timer: 2500,
+    });
+    //cerrar modal
   };
   const dropFile = async (e) => {
     e.stopPropagation();
@@ -46,6 +45,7 @@ export default function FormCollb() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = async (data) => {
     Swal.fire({
       position: 'center',
@@ -70,6 +70,131 @@ export default function FormCollb() {
       console.log(error);
     }
   };
+
+  const nombresEps = [
+    "ALIANSALUD",
+    "SALUD TOTAL S.A. E.P.S",
+    "CAFESALUD E.P.S. S.A.",
+    "BONSALUD S.A.",
+    "E.P.S. SANITAS S.A.",
+    "INSTITUTO DE SEGUROS SOCIALES",
+    "UNIMEC S.A.",
+    "COMPENSAR E.P.S.",
+    "EPS COMFENALCO ANTIOQUIA",
+    "SURA E.P.S",
+    "ASEGURADORA DE VIDA COLSEGUROS",
+    "COMFENALCO VALLE E.P.S.",
+    "E.P.S. SALUDCOOP",
+    "HUMANA VIVIR S.A. E.P.S.",
+    "SALUD COLPATRIA E.P.S.",
+    "COOMEVA E.P.S. SA",
+    "E.P.S. FAMISANAR LTDA.",
+    "SERVICIO OCCIDENTAL DE SALUD",
+    "E.P.S. RISARALDA",
+    "CAPRECOM E.P.S.",
+    "CORPORANONIMAS",
+    "CONVIDA",
+    "CRUZ BLANCA E.P.S. SA",
+    "CAJANAL",
+    "CAPRESOCA",
+    "SOLSALUD E.P.S. S.A.",
+    "BARRANQUILLA SANA E.P.S.",
+    "CALISALUD E.P.S.",
+    "E.P.S. DE CALDAS S.A.",
+    "E.P.S. CONDOR S.A.",
+    "SELVASALUD S.A. E.P.S.",
+    "SALUDVIDA S.A. E.P.S.",
+    "SALUDCOLOMBIA E.P.S. S.A.",
+    "RED SALUD ATENCION HUMANA EPS",
+    "DEPTO SERVICIO MED Y ODOD EPM",
+    "NUEVA E.P.S. S.A.",
+    "MULTIMEDICAS SALUD E.P.S. S.A",
+    "GOLDEN GROUP S.A. EPS",
+    "MEDIMAS EPS S.A.S",
+    "FOSYGA",
+    "POLICIA NACIONAL",
+    "ECOPETROL",
+    "FUERZAS MILITARES",
+    "MAGISTERIO",
+    "CONGRESO DE LA REPUBLICA",
+    "INPEC",
+    "S.O.S COMFANDI",
+    "UNISALUD",
+    "DIR. GENERAL DE SALUD MILITAR",
+    "COSMITET LTDA MAGISTER QUINDIO",
+    "COLOMBIANA DE SALUD",
+    "MEJOR SALUD",
+    "COMFAMILIARES",
+    "EMSSANAR ESS",
+    "COMFAMILIAR CARTAGENA EPS",
+    "COMFABOY EPS",
+    "COMFACOR EPS",
+    "CAFAM EPS",
+    "COMFAMILIAR DE LA GUAJIRA",
+    "COMFAMILIAR HUILA EPS",
+    "COMFAMILIAR NARIÑO EPS",
+    "COMFASUCRE EPS",
+    "COMFACUNDI",
+    "CAJACOPI ATLANTICO",
+    "COLSUBSIDIO EPSS",
+    "COMFACHOCO",
+    "EPSS CONVIDA",
+    "CAPRESOCA EPS",
+    "DUSAKAWI",
+    "ANAS WAY",
+    "ASOCIACION INDIGENA DEL CAUCA",
+    "EPS MALLAMAS EPSI",
+    "PIJAOSALUD EPSI",
+    "CAPITAL SALUD ",
+    "COOSALUD ESS",
+    "ASMET SALUD",
+    "AMBUQ",
+    "ECOOPSOS",
+    "COOP DE SALUD COMUNITARIA",
+    "ASOCIACION MUTUAL SER EMPRESA",
+    "SAVIA SALUD EPS",
+    "AMBUQ EPSS ESS",
+    "COMFAORIENTE",
+    "FAMISALUD COMFANORTE ARS",
+    "EMPRESAS PUBLICAS DE MEDELLIN",
+    "FONDO PASIVO SOCIAL FERROCARR",
+  ];
+
+  const nombrePension = [
+
+    'PROTECCION',
+    'PORVENIR',
+    'BBVA HORIZONTE',
+    'COLPENSIONES',
+    'SANTANDER',
+    'COLFONDOS',
+    'SKANDIA',
+    'CAXDAC-CAJA DE PREV. SOCIAL DE',
+    'FONPRECON-FONDO DEL CONGRESO',
+    'CAPRECOM-CAJA DE PREVISION SOC',
+    'PENSIONES DE ANTIOQUIA',
+    'CAJANAL-CAJA NACIONAL DE PREVI',
+    'CAJA DE PREV. SOC. DE UNICAUCA',
+    'ING PENSIONES Y CESANTIAS',
+    'PERSONA PENSIONADA - NO REQUIERE COTIZACIÓN A PENSACIÓN',
+
+  ];
+
+  const nombreArl = [
+'A.R.L. Seguros de Vida Colpatria S.A.',
+'Compañía de Seguros Bolívar S.A.',
+'Seguros de Vida Aurora',
+'ARP Alfa',
+'Liberty Seguros de Vida S.A.',
+'Positiva Compañía de Seguros',
+'Colmena Riesgos Profesionales',
+'ARL Sura',
+'La Equidad Seguros de Vida',
+'Mapfre Colombia Vida Seguros S.A',
+
+  ];
+
+  
 
   return (
     <div className="add-c">
@@ -209,6 +334,29 @@ export default function FormCollb() {
         </div>
 
         <div className="add-i">
+          <label htmlFor="nac">Fecha de Nacimiento</label>
+          <input
+            id="nac"
+            name="birthdate"
+            type="date"
+            placeholder="Fecha de Nacimiento"
+            {...register("birthdate", {
+              required: {
+                value: true,
+                maxLength: 48,
+                message: "El campo es requerido",
+              },
+              // pattern: {
+              //   value: /^([012][1-9]|3[01])(\/)(0[1-9]|1[012])\2(\d{4})$/,
+              //   message: "El formato no es correcto",
+              // },
+            })}
+          />
+          {errors.birthdate && <span>{errors.birthdate.message}</span>}
+        </div>
+
+
+        <div className="add-i">
           <label htmlFor="age">Edad</label>
           <input
             id="age"
@@ -230,27 +378,7 @@ export default function FormCollb() {
           {errors.age && <span>{errors.age.message}</span>}
         </div>
 
-        <div className="add-i">
-          <label htmlFor="nac">Fecha de Nacimiento</label>
-          <input
-            id="nac"
-            name="birthdate"
-            type="date"
-            placeholder="Fecha de Nacimiento"
-            {...register("birthdate", {
-              required: {
-                value: true,
-                maxLength: 48,
-                message: "El campo es requerido",
-              },
-              // pattern: {
-              //   value: /^([012][1-9]|3[01])(\/)(0[1-9]|1[012])\2(\d{4})$/,
-              //   message: "El formato no es correcto",
-              // },
-            })}
-          />
-          {errors.birthdate && <span>{errors.birthdate.message}</span>}
-        </div>
+        
 
         <div className="add-i">
           <label htmlFor="contract">Tipo de Contrato</label>
@@ -584,46 +712,35 @@ export default function FormCollb() {
 
         <div className="add-i">
           <label htmlFor="eps">EPS</label>
-          <input
-            id="eps"
+          <select
+            {...register("EPS")}
+            d="eps"
             name="EPS"
             type="text"
             placeholder="EPS"
-            {...register("EPS", {
-              required: true,
-              maxLength: 50,
-              // pattern: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
-            })}
-          />
+          >
+            {nombresEps.map((nombreEps) => (
+              <option value={nombreEps}>{nombreEps}</option>
+            ))}
+          </select>
         </div>
 
         <div className="add-i">
-          <label htmlFor="p"> Fondo De Pensiones </label>
-          <input
-            id="fp"
-            name="FDP"
-            type="text"
-            placeholder="Fondo De Pensiones"
-            {...register("FDP", {
-              required: true,
-              maxLength: 50,
-              // pattern: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
-            })}
-          />
+          <label htmlFor="FDP">Fondo De Pensiones</label>
+          <select {...register("FDP")} id="FDP" name="FDP" placeholder="FDP">
+          {nombrePension.map((nombrePension) => (
+              <option value={nombrePension}>{nombrePension}</option>
+            ))}
+          </select>
         </div>
+
         <div className="add-i">
           <label htmlFor="arl">ARL</label>
-          <input
-            id="arl"
-            name="ARL"
-            type="text"
-            placeholder="ARL"
-            {...register("ARL", {
-              required: true,
-              maxLength: 50,
-              // pattern: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
-            })}
-          />
+          <select {...register("ARL")} id="arl" name="ARL" placeholder="ARL">
+          {nombreArl.map((nombreArl) => (
+              <option value={nombreArl}>{nombreArl}</option>
+            ))}
+          </select>
         </div>
 
         <div className="add-i obs">
