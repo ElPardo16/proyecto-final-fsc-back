@@ -156,7 +156,10 @@ const columns =  useMemo(
 
                         }).then(res => res.json())
                         console.log(json)
-                        router.push('/certification')
+                        router.push({
+                           pathname:'/certification',
+                           query:{email:params.row.original.email}
+                        })
                      } catch (error) {
                         console.log(error)
                      }
