@@ -43,7 +43,7 @@ input::-webkit-inner-spin-button {
 }
 
 input {
-   height: 60px;
+   height: 9vh;
 }
 
 header {
@@ -52,24 +52,25 @@ header {
    display: flex;
    justify-content: flex-start;
    align-items: center;
-   gap: 50px;
+   gap: 5%;
    background-color: $bg;
 
    h1 {
-      font-size: 1.8rem;
+      font-size: clamp(1rem, 2vw,1.5rem );
    }
 
    nav {
       position: relative;
       margin-left: auto;
       align-self: stretch;
-      font-size: 1.4rem;
+      font-size: clamp(1.2rem, 2vw,1.4rem );
 
       &:hover ul {
          transform: scaleY(1);
       }
 
       div {
+         font-size: clamp(.9rem, 2vw,1.3rem );
          padding-left: 40px;
          display: flex;
          align-items: center;
@@ -340,11 +341,11 @@ header {
 }
 
 .filters {
-   margin: auto;
+   margin: 5vh auto;
    width: 90%;
-   height: 100px;
    display: flex;
    justify-content: space-between;
+   flex-wrap: wrap;
    align-items: center;
    gap: 20px;
 
@@ -375,7 +376,7 @@ header {
       place-items: center;
       cursor: pointer;
       justify-content: center;
-     
+      
       &:hover {
          background-color: $bg;
          outline: 1px solid black;
@@ -413,6 +414,7 @@ header {
    align-items: center;
    justify-content: center;
    gap: 200px;
+   padding: 20px;
 
    iframe {
       height: 80vh;
@@ -432,7 +434,7 @@ header {
       border-radius: 10px;
       color: white;
       border: none;
-      font-size: 32px;
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
       text-decoration: none;
       text-align: center;
       display: grid;
@@ -479,3 +481,48 @@ header {
 .MuiDataGrid-row:nth-child(2n) {
    background: $bg;
 }
+
+//-----------Media Queries -----
+@media (min-width: 320px) and (max-width: 1000px) {
+   .add-c{
+      padding: 10px;
+      grid: none;
+   }
+   .certification{
+      flex-wrap: wrap;
+      gap: 100px;
+   }
+}
+@media (min-width: 320px) and (max-width: 700px) {
+   header {
+   justify-content: space-between;
+   padding: 0;
+      nav ul{
+            width: 100vw;
+      }
+   }
+   .filters{
+      justify-content: center;
+      }
+   .ReactModal__Content.ReactModal__Content--after-open{
+      width: 98vw !important;
+   }
+   .certification iframe {
+      height: 60vh;
+      width: 400px;
+   }
+}
+   @media (min-width: 320px) and (max-width: 440px) {
+   header h1{
+      display: none;
+   }
+    nav div{
+      gap: 0;
+      padding: 0;
+    }
+   .certification  button, .certification a{
+      width: 90%;
+      margin: auto;
+      
+   }
+   }
