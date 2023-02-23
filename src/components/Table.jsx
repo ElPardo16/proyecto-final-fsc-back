@@ -129,9 +129,10 @@ const columns =  useMemo(
       Cell: (params) => {                                                                                                                                                                                            
          return (
             <div>
-               <MdMode size={40} onClick={() => console.log(`Eliminar: ${params.row.id}`)} />
+               <MdMode size={40} onClick={() => console.log(`Eliminar: ${params.row.original.id}`)} />
 
                   <MdPictureAsPdf size={40} onClick={async _ => {
+                     console.log(params)
                      try {
                         const json = await fetch('http://localhost:5000/api/cert', {
                            method: 'POST',
@@ -139,19 +140,26 @@ const columns =  useMemo(
                               "Content-Type": "application/json"
                            },
                            body: JSON.stringify({
-                              name: `${params.row.fName || ''} ${params.row.sName || ''} ${params.row.fLastName || ''} ${params.row.sLastName || ''}`,
-                              cc: params.row.document,
-                              modality: params.row.modality,
-                              contract: params.row.contract,
-                              cargo: params.row.position,
-                              time: `${params.row.dateIFSC} hasta ${params.row.dateR ?? new Date().toJSON().slice(0, 10).replace(/-/g, '/')}.`,
-                              sletras: params.row.salaryL,
-                              snumeros: params.row.salaryN,
+                              name: `${params.row.original.fName || ''} ${params.row.original.sName || ''} ${params.row.original.fLastName || ''} ${params.row.original.sLastName || ''}`,
+                              cc: params.row.original.document,
+                              modality: params.row.original.modality,
+                              contract: params.row.original.contract,
+                              cargo: params.row.original.position,
+                              // time: `${params.row.original.dateIFSC} hasta ${params.row.original.dateR ?? new Date().toJSON().slice(0, 10).replace(/-/g, '/')}.`,
+                              timeI: params.row.original.dateIFSC,
+                              sletras: params.row.original.salaryL,
+                              snumeros: params.row.original.salaryN,
+                              estado:params.row.original.state,
+                              typeCon:params.row.original.contract,
+                              fechaFinal:params.row.original.dateR,
                            })
 
                         }).then(res => res.json())
                         console.log(json)
-                        router.push('/certification')
+                        router.push({
+                           pathname:'/certification',
+                           query:{email:params.row.original.email}
+                        })
                      } catch (error) {
                         console.log(error)
                      }

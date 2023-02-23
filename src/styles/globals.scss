@@ -425,6 +425,17 @@ header {
       display: flex;
       flex-direction: column;
       gap: 3rem;
+      form{
+         display: grid;
+         gap: 40px;
+         .formEmail{
+            display: grid;
+            gap: 20px;
+         }
+         button{
+            height: 50px;
+         }
+      }
    }
 
    button,
@@ -442,12 +453,18 @@ header {
       cursor: pointer;
    }
 
-   a:first-child {
+   a {
       background-color: #94ca36;
    }
 
-   button:last-child {
+   button {
       background-color: #18006C;
+   }
+
+   input{
+      width: 340px;
+      border-radius: 10px;
+      padding-left: 20px;
    }
 }
 
