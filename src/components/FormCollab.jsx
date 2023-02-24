@@ -69,7 +69,6 @@ export default function FormCollb() {
         body: JSON.stringify(data),
       });
      
-     
       const json = await res.json();
     
       console.log(json);
@@ -213,7 +212,7 @@ export default function FormCollb() {
 
   ];
 
-  
+
 
   return (
     <div className="add-c">
