@@ -56,6 +56,7 @@ export default function FormCollb() {
     })
     console.log(data);
     console.log(Object.keys(data).length);
+
     try {
       const res = await fetch("http://localhost:5000/api/collaborator", {
         method: "POST",
@@ -194,7 +195,7 @@ export default function FormCollb() {
 
   ];
 
-  
+
 
   return (
     <div className="add-c">
