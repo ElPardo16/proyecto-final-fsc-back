@@ -37,14 +37,17 @@ export default function FormCollb() {
     readDB(data);
     setDrag(!drag);
   };
+
   const onDragOver = (e) => {
     e.preventDefault();
   };
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  
 
   const onSubmit = async (data) => {
     Swal.fire({
@@ -56,7 +59,7 @@ export default function FormCollb() {
     })
     console.log(data);
     console.log(Object.keys(data).length);
-
+   
     try {
       const res = await fetch("http://localhost:5000/api/collaborator", {
         method: "POST",
@@ -65,13 +68,27 @@ export default function FormCollb() {
         },
         body: JSON.stringify(data),
       });
+     
       const json = await res.json();
+    
       console.log(json);
     } catch (error) {
       console.log(error);
     }
   };
 
+  
+  
+
+
+  function calculate_age(e) {
+    const dob = e.target.value
+    const fecha = new Date (dob) 
+    const diff_ms = Date.now() - fecha.getTime();
+    const age_dt = new Date(diff_ms); 
+  
+    age.value = Math.abs(age_dt.getUTCFullYear()  - 1970);
+}
   const nombresEps = [
     "ALIANSALUD",
     "SALUD TOTAL S.A. E.P.S",
@@ -340,8 +357,9 @@ export default function FormCollb() {
             id="nac"
             name="birthdate"
             type="date"
-            placeholder="Fecha de Nacimiento"
+            placeholder="Fecha de Nacimiento"    
             {...register("birthdate", {
+              onChange:calculate_age,
               required: {
                 value: true,
                 maxLength: 48,
@@ -365,6 +383,7 @@ export default function FormCollb() {
             name="age"
             placeholder="Edad"
             {...register("age", {
+              disabled: true,
               required: {
                 value: true,
                 maxLength: 3,

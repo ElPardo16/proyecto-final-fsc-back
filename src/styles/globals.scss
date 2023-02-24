@@ -12,6 +12,8 @@ $txt-s: rgba(0, 0, 0, 0.7);
    font-family: "Poppins", sans-serif;
 }
 
+
+
 .btn {
    padding: 10px 20px;
    border: none;
@@ -372,7 +374,8 @@ header {
       gap: 20px;
       place-items: center;
       cursor: pointer;
-
+      justify-content: center;
+     
       &:hover {
          background-color: $bg;
          outline: 1px solid black;
@@ -420,6 +423,17 @@ header {
       display: flex;
       flex-direction: column;
       gap: 3rem;
+      form{
+         display: grid;
+         gap: 40px;
+         .formEmail{
+            display: grid;
+            gap: 20px;
+         }
+         button{
+            height: 50px;
+         }
+      }
    }
 
    button,
@@ -437,12 +451,18 @@ header {
       cursor: pointer;
    }
 
-   a:first-child {
+   a {
       background-color: #94ca36;
    }
 
-   button:last-child {
+   button {
       background-color: #18006C;
+   }
+
+   input{
+      width: 340px;
+      border-radius: 10px;
+      padding-left: 20px;
    }
 }
 
@@ -456,6 +476,7 @@ header {
    > div {
       display: flex;
       gap: 20px;
+      justify-content: center;
       svg{
          cursor: pointer;
       }
