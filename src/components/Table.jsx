@@ -9,8 +9,6 @@ import EditCollab from './Editcollab';
 
 
 export default function Table({ people }) {
-<<<<<<< HEAD
-=======
    
    const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -35,7 +33,6 @@ export default function Table({ people }) {
 
    const [divar, setdivar] = useState()
 
->>>>>>> 6b5cc0950a6a628ee3c71ad05da92266ad46585d
    const router = useRouter();
    const columns = useMemo(
       () => [
@@ -157,15 +154,8 @@ export default function Table({ people }) {
             Cell: (params) => {
                return (
                   <div>
-<<<<<<< HEAD
-                     <MdMode size={40} onClick={() => console.log(`Eliminar: ${params.row.original.id}`)} />
-
-                     <MdPictureAsPdf size={40} onClick={async _ => {
-                        console.log(params)
-=======
                      <MdMode size={40} onClick={() => {setdivar(params.row.original.id); openModal()}} />
                      <MdPictureAsPdf size={40} onClick={async _ => {
->>>>>>> 6b5cc0950a6a628ee3c71ad05da92266ad46585d
                         try {
                            const json = await fetch('http://localhost:5000/api/cert', {
                               method: 'POST',
@@ -178,10 +168,7 @@ export default function Table({ people }) {
                                  modality: params.row.original.modality,
                                  contract: params.row.original.contract,
                                  cargo: params.row.original.position,
-<<<<<<< HEAD
                                  // time: `${params.row.original.dateIFSC} hasta ${params.row.original.dateR ?? new Date().toJSON().slice(0, 10).replace(/-/g, '/')}.`,
-=======
->>>>>>> 6b5cc0950a6a628ee3c71ad05da92266ad46585d
                                  timeI: params.row.original.dateIFSC,
                                  sletras: params.row.original.salaryL,
                                  snumeros: params.row.original.salaryN,
@@ -253,12 +240,9 @@ export default function Table({ people }) {
          obs
       }
    })
-<<<<<<< HEAD
-=======
    const options = {
       showHideCols: false,
    };
->>>>>>> 6b5cc0950a6a628ee3c71ad05da92266ad46585d
 
    return (
       <div className='container-table'>
@@ -266,7 +250,6 @@ export default function Table({ people }) {
             <MaterialReactTable
                data={rows}//base de datos reemplace rows con la data
                columns={columns}
-<<<<<<< HEAD
                muiTablePaginationProps={
                   {
                      rowsPerPageOptions: [17, 30, 50, 100]
@@ -284,14 +267,6 @@ export default function Table({ people }) {
                      }
                   }
                }
-=======
-               setPageSize={17}
-               rowsPerPageOptions={[17]}
-               enableTopToolbar={false}
-               enableColumnActions={false}
-               initialState={{ columnPinning: { right: ['actions'] } }}
-            //experimentalFeatures={{ newEditingApi: true }} editable
->>>>>>> 6b5cc0950a6a628ee3c71ad05da92266ad46585d
             />
          </Box>
          <Modal
