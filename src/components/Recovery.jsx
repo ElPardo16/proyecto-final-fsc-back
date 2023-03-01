@@ -36,7 +36,7 @@ export default function Recovery() {
 
   return (
     <>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form name="recovery" onSubmit={handleSubmit(onSubmit)}>
           <div className="pss">
             {/* <label htmlFor="password"> Nueva contraseña</label> */}
             <input

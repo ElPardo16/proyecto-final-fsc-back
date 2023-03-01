@@ -168,6 +168,7 @@ export default function Table({ people }) {
                                  modality: params.row.original.modality,
                                  contract: params.row.original.contract,
                                  cargo: params.row.original.position,
+                                 // time: `${params.row.original.dateIFSC} hasta ${params.row.original.dateR ?? new Date().toJSON().slice(0, 10).replace(/-/g, '/')}.`,
                                  timeI: params.row.original.dateIFSC,
                                  sletras: params.row.original.salaryL,
                                  snumeros: params.row.original.salaryN,
@@ -249,12 +250,23 @@ export default function Table({ people }) {
             <MaterialReactTable
                data={rows}//base de datos reemplace rows con la data
                columns={columns}
-               setPageSize={17}
-               rowsPerPageOptions={[17]}
+               muiTablePaginationProps={
+                  {
+                     rowsPerPageOptions: [17, 30, 50, 100]
+                  }
+               }
                enableTopToolbar={false}
                enableColumnActions={false}
-               initialState={{ columnPinning: { right: ['actions'] } }}
-            //experimentalFeatures={{ newEditingApi: true }} editable
+               initialState={
+                  {
+                     pagination: {
+                        pageSize: 17
+                     },
+                     columnPinning: {
+                        right: ['actions']
+                     }
+                  }
+               }
             />
          </Box>
          <Modal
