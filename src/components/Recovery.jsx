@@ -1,6 +1,5 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import jwt from 'jsonwebtoken'
 
 
 export default function Recovery() {
@@ -19,7 +18,7 @@ export default function Recovery() {
 
   return (
     <>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form name="recovery" onSubmit={handleSubmit(onSubmit)}>
           <div className="pss">
             {/* <label htmlFor="password"> Nueva contraseña</label> */}
             <input
@@ -58,9 +57,6 @@ export default function Recovery() {
 
           <div className="bpss">
             <button type="submit">Cambiar</button>
-            <button type="submit">
-              Cancelar
-            </button>
           </div>
         </form>
      

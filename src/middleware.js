@@ -23,6 +23,20 @@ export async function middleware(req) {
       return NextResponse.redirect(new URL('/', req.nextUrl.origin))
     }
   }
+  if (req.nextUrl.pathname.startsWith("/reset")){
+    const jwt = req.nextUrl.pathname.split("/").at(-1)
+    if(!jwt){
+      return NextResponse.redirect(new URL('/', req.nextUrl.origin))
+    }
+
+    try {
+      const verifyTk = await jwtVerify(jwt, new TextEncoder().encode(process.env.JWT_SECRET))
+      return NextResponse.next()
+    } catch (error) {
+      console.log(`Error: ${error}`)      
+      return NextResponse.redirect(new URL('/', req.nextUrl.origin))
+    }
+  }
   if (req.nextUrl.pathname === "/") {
   
     if(jwt){
