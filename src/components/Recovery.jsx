@@ -1,6 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import jwt from 'jsonwebtoken'
+import axios from 'axios'
+import { useRouter } from "next/router";
+
 
 
 export default function Recovery() {
@@ -13,9 +16,23 @@ export default function Recovery() {
   const password = React.useRef({});
   password.current = watch("password", "");
 
-  const onSubmit = (data) => {
+  const router = useRouter()
+  const { token } = router.query
+
+  const onSubmit = async (data) => {
     console.log(data);
+    await axios.post('http://localhost:5000/api/verify', {
+      token, 
+      data
+    })
   };
+
+  // const verify = async () => {
+  //   await axios.post('http://localhost:5000/api/verify', {
+  //     token, 
+  //     password:password.current
+  //   })
+  // }
 
   return (
     <>
@@ -58,12 +75,10 @@ export default function Recovery() {
 
           <div className="bpss">
             <button type="submit">Cambiar</button>
-            <button type="submit">
-              Cancelar
-            </button>
+            <button type="submit">Cancelar</button>
           </div>
         </form>
-     
+    
     </>
   );
 }

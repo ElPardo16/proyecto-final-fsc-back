@@ -106,6 +106,7 @@ export default function Dashboard({ data, people }) {
             ))}
           </select>
         </div>
+        
         <div className="actions" onClick={openModal}>
           <MdAdd size={40} />
           <span>Agregar Colaborador</span>
@@ -118,6 +119,7 @@ export default function Dashboard({ data, people }) {
         >
           <ModalCollb onClose={closeModal} />
         </Modal>
+
         <div className="actions" onClick={genExcel}>
           <MdOutlinePostAdd size={40} />
           <span>Exportar datos</span>
