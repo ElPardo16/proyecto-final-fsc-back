@@ -294,6 +294,13 @@ header {
    }
 }
 
+.hf{
+   grid: 1fr/1fr;
+   .file{
+      display: none;
+   }
+}
+
 .add-i {
    display: flex;
    flex-direction: column;
