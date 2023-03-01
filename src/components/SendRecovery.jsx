@@ -3,6 +3,7 @@ import { MdClose } from 'react-icons/md';
 import { RiRotateLockFill } from "react-icons/ri";
 import Modal from "react-modal";
 import axios from 'axios'
+import Swal from "sweetalert2";
 
 Modal.setAppElement("#__next");
 
@@ -36,6 +37,14 @@ export default function SendRecovery({ isOpen, onRequestClose }) {
     const reestablecer = async (id) => {
         const dataos = {id}
         await axios.post('http://localhost:5000/api/change',dataos)
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Link enviado",
+            showConfirmButton: false,
+            timer: 2500,
+          });
+        onRequestClose()
     }
 
     return (

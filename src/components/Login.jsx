@@ -12,7 +12,9 @@ export default function Login() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
+	const sendRecovery = _ => {
 
+	}
 	const onSubmit = async data => {
     //console.log(data)
         // const {email, password} = data
@@ -43,7 +45,7 @@ export default function Login() {
 
 	return (
 		<div className="container">
-			<Image src="/img/logo.png" alt="logo" width={150} height={150} />
+			<Image src="/img/logo.png" alt="logo" width={120} height={120} />
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="login-input">
 					<FaUserCircle size={20}/>
@@ -89,6 +91,8 @@ export default function Login() {
 				</div>
 
 				<button className="btn submit">Ingresar</button>
+
+				<p onClick={sendRecovery}>Recuperar Contraseña <br/>(solo administradores)</p>
 			</form>
 		</div>
 	);

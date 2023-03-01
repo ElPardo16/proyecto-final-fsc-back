@@ -27,7 +27,7 @@ export default function EditCollab({ onClose, propid}) {
         <h2>Editar colaborador</h2>
       </header>
       <div onClick={onClose}><MdClose size={30} className="close-modal" /></div>
-      <FormCollab enviar={false} person={userData}/> 
+      <FormCollab closeM={onClose} enviar={false} person={userData}/> 
     </div>
 
   )

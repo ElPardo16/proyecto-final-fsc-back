@@ -1,9 +1,7 @@
-import { red } from "@mui/material/colors";
-import { height, padding } from "@mui/system";
 import React from "react";
 import { useForm } from "react-hook-form";
 import Modal from "react-modal";
-import { MdPersonAdd, MdClose } from "react-icons/md";
+import { MdPersonAdd } from "react-icons/md";
 import Swal from "sweetalert2";
 
 Modal.setAppElement("#__next");
@@ -34,15 +32,6 @@ export default function AddUser({ isOpen, onRequestClose }) {
   };
 
   const onSubmit = async (data) => {
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Nuevo usuario creado Satisfactoriamente",
-      showConfirmButton: false,
-      timer: 2500,
-    });
-    console.log(data);
-    console.log(Object.keys(data).length);
 
     try {
       const res = await fetch("http://localhost:5000/api/user", {
@@ -57,6 +46,14 @@ export default function AddUser({ isOpen, onRequestClose }) {
     } catch (error) {
       console.log(error);
     }
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Nuevo usuario creado Satisfactoriamente",
+      showConfirmButton: false,
+      timer: 2500,
+    });
+    onRequestClose()
   };
 
   return (

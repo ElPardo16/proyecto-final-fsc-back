@@ -138,7 +138,7 @@ export default function Dashboard({ data, people }) {
           </select>
         </div>
       </div>
-      <Table people={listPeople} />
+      <Table people={listPeople} dataUser={data}/>
     </div>
   );
 }

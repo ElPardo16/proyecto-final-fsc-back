@@ -8,7 +8,7 @@ import EditCollab from './Editcollab';
 
 
 
-export default function Table({ people }) {
+export default function Table({ people, dataUser }) {
    
    const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -154,7 +154,7 @@ export default function Table({ people }) {
             Cell: (params) => {
                return (
                   <div>
-                     <MdMode size={40} onClick={() => {setdivar(params.row.original.id); openModal()}} />
+                    {dataUser.role === "admin" && <MdMode size={40} onClick={() => {setdivar(params.row.original.id); openModal()}} />}
                      <MdPictureAsPdf size={40} onClick={async _ => {
                         try {
                            const json = await fetch('http://localhost:5000/api/cert', {

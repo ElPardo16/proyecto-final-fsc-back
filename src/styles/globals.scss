@@ -120,6 +120,14 @@ header {
    form {
       display: grid;
       gap: 40px;
+      input{
+         width: 100%;
+      }
+   }
+   p{
+      color:steelblue;
+      text-align: center;
+      cursor: pointer;
    }
 }
 

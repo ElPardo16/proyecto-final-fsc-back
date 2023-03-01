@@ -12,7 +12,7 @@ export default function ModalCollb({ onClose }) {
         <h2>Agregar colaborador</h2>
       </header>
       <div onClick={onClose}><MdClose size={30} className="close-modal" /></div>
-      <FormCollab/>
+      <FormCollab closeM={onClose}/>
     </div>
   )
 }
