@@ -28,7 +28,7 @@ export default function SendRecovery({ isOpen, onRequestClose }) {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await axios.get('http://localhost:5000/api/user');
+            const response = await axios.get('https://proyecto-final-fsc-backend.vercel.app/api/user');
             setUsers(response.data);
         }
         fetchData();
@@ -37,7 +37,7 @@ export default function SendRecovery({ isOpen, onRequestClose }) {
     const reestablecer = async (id) => {
         const dataos = { id }
         try {
-            await axios.post('http://localhost:5000/api/change', dataos)
+            await axios.post('https://proyecto-final-fsc-backend.vercel.app/api/change', dataos)
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -74,8 +74,8 @@ export default function SendRecovery({ isOpen, onRequestClose }) {
                     </div>
 
                     {users.map(user => (
-                        <div>
-                            <span key={user._id}>{user.email}</span>
+                        <div key={user._id}>
+                            <span>{user.email}</span>
                             <button className="btn submit"
                                 onClick={() => reestablecer(user._id)}
                             ><RiRotateLockFill /></button>

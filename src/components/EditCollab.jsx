@@ -4,20 +4,15 @@ import { MdPersonAdd, MdClose } from "react-icons/md";
 import FormCollab from "./FormCollab";
 
 
-export default function EditCollab({ onClose, propid}) {
+export default function EditCollab({ onClose, propid }) {
 
   const [userData, setUserData] = useState({});
+  const update = async () => {
+    const res = await axios.get(`https://proyecto-final-fsc-backend.vercel.app/api/editcollab/${propid}`)
+    setUserData(res.data)
+  }
 
-
-  useEffect(() => {
-    const update = async () => {
-      const res = await axios.get(`http://localhost:5000/api/editcollab/${propid}`)
-      setUserData(res.data)
-      console.log(res.data)
-      console.log(userData)
-    }
-    update()
-  }, [])
+  useEffect(update, [])
 
   return (
 
@@ -27,7 +22,7 @@ export default function EditCollab({ onClose, propid}) {
         <h2>Editar colaborador</h2>
       </header>
       <div onClick={onClose}><MdClose size={30} className="close-modal" /></div>
-      <FormCollab closeM={onClose} enviar={false} person={userData}/> 
+      <FormCollab closeM={onClose} enviar={false} person={userData} />
     </div>
 
   )

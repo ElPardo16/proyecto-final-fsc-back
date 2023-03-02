@@ -34,7 +34,7 @@ export default function AddUser({ isOpen, onRequestClose }) {
   const onSubmit = async (data) => {
 
     try {
-      const res = await fetch("http://localhost:5000/api/user", {
+      const res = await fetch("https://proyecto-final-fsc-backend.vercel.app/api/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

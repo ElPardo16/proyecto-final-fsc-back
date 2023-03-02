@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import Swal from "sweetalert2";
 
 
-export default function adminps() {
+export default function Adminps() {
 
   const {
     register,
@@ -13,7 +13,7 @@ export default function adminps() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await fetch('http://localhost:5000/api/recovadmin', {
+      const res = await fetch('https://proyecto-final-fsc-backend.vercel.app/api/recovadmin', {
         method: 'POST',
         headers: {
           'Content-Type':'application/json'

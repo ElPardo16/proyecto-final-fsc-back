@@ -16,7 +16,7 @@ export default function Login() {
   const onSubmit = async (data) => {
     // console.log(data);
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/login", {
+      const res = await fetch("https://proyecto-final-fsc-backend.vercel.app/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export default function Login() {
 
 	  else {
         const json = await res.json();
-		const res2 = await fetch("http://127.0.0.1:5000/api/strikes", {
+		const res2 = await fetch("https://proyecto-final-fsc-backend.vercel.app/api/strikes", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

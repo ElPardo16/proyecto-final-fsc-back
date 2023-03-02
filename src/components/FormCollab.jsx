@@ -93,7 +93,7 @@ export default function FormCollab({ enviar = true, person, closeM }) {
 
     const onSubmit = async (data) => {
         try {
-            const res = await fetch(`http://localhost:5000/api/collaborator/${person?._id ?? ''}`, {
+            const res = await fetch(`https://proyecto-final-fsc-backend.vercel.app/api/collaborator/${person?._id ?? ''}`, {
                 method: person ? "PUT" : "POST",
                 headers: {
                     "Content-Type": "application/json",

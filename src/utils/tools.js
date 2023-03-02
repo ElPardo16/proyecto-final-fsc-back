@@ -2,14 +2,14 @@ import moment from "moment/moment"
 import { readFile, utils, writeFile } from "xlsx"
 
 export async function getData() {
-    const response = await fetch("http://localhost:5000/api/collaborator")
+    const response = await fetch("https://proyecto-final-fsc-backend.vercel.app/api/collaborator")
     const json = await response.json()
     return json
 }
 
 export async function sendData(data) {
     try {
-        const res = await fetch("http://localhost:5000/api/collaborator", {
+        const res = await fetch("https://proyecto-final-fsc-backend.vercel.app/api/collaborator", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"

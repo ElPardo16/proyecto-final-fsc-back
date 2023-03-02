@@ -22,7 +22,7 @@ export default function Recovery() {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post('http://localhost:5000/api/verify', {
+      await axios.post('https://proyecto-final-fsc-backend.vercel.app/api/verify', {
         token,
         data
       })
