@@ -1,5 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { MdPersonAdd, MdClose } from "react-icons/md";
+import Swal from "sweetalert2";
 import jwt from 'jsonwebtoken'
 import axios from 'axios'
 import { useRouter } from "next/router";
@@ -15,15 +17,21 @@ export default function Recovery() {
   } = useForm();
   const password = React.useRef({});
   password.current = watch("password", "");
-
+    
   const router = useRouter()
   const { token } = router.query
 
   const onSubmit = async (data) => {
-    console.log(data);
     await axios.post('http://localhost:5000/api/verify', {
       token, 
       data
+    })
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Contraseña Restablecida Satisfactoriamente',
+      showConfirmButton: false,
+      timer: 2500
     })
   };
 
@@ -35,9 +43,14 @@ export default function Recovery() {
   // }
 
   return (
-    <>
+    <> <div className="container">
+      <div className="restCont">
+        <MdPersonAdd size={30} />
+        <h3>Restablecer Contraseña</h3>
+      </div>
         <form name="recovery" onSubmit={handleSubmit(onSubmit)}>
-          <div className="pss">
+
+          <div className="login-input">
             {/* <label htmlFor="password"> Nueva contraseña</label> */}
             <input
               type="password"
@@ -52,8 +65,7 @@ export default function Recovery() {
               <span>La contraseña debe tener al menos 8 caracteres</span>
             )}
           </div>
-
-          <div className="pss">
+          <div className="login-input">
             {/* <label htmlFor="password2">Confirmar Contraseña:</label> */}
             <input
               type="password"
@@ -72,13 +84,11 @@ export default function Recovery() {
               <span>{errors.password2.message}</span>
             )}
           </div>
-
-          <div className="bpss">
-            <button type="submit">Cambiar</button>
-            <button type="submit">Cancelar</button>
+          <div className="bp">
+            <button type="submit" className="btn submit">Enviar</button>
           </div>
         </form>
-    
+      </div>
     </>
   );
 }
