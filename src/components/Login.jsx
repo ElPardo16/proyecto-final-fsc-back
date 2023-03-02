@@ -67,6 +67,8 @@ export default function Login() {
     }
   };
 
+  const sendRecovery = () => {router.push('/adminps')}
+
   return (
     <div className="container">
       <Image src="/img/logo.png" alt="logo" width={150} height={150} />
@@ -116,7 +118,7 @@ export default function Login() {
 
 				<button className="btn submit">Ingresar</button>
 
-				<p /* onClick={sendRecovery} */>Recuperar Contraseña <br/>(solo administradores)</p>
+				<p onClick={sendRecovery}>Recuperar Contraseña <br/>(solo administradores)</p>
 			</form>
 		</div>
 	);
