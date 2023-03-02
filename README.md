@@ -1,30 +1,46 @@
 
 # Fundación Social Crecer
 
-<img src="">
+
+<img src="img/fundación.jpeg" width="200">
 
 El siguiente proyecto fue desarrollado con Next.js, una popular librería de React, con el objetivo de simplificar la gestión de usuarios y la expedición de certificados laborales en formato PDF. El proyecto permite la carga masiva de usuarios a través de un archivo Excel, lo que reduce significativamente el tiempo necesario para ingresar la información manualmente. Además, una vez que los usuarios están registrados en el sistema, se puede expedir automáticamente el certificado laboral en formato PDF, el cual se puede enviar al correo electrónico de la persona de forma rápida y sencilla. Este proyecto ofrece una solución eficiente para la gestión de usuarios y la expedición de certificados laborales, lo que resulta especialmente útil en entornos donde la rapidez y la precisión son fundamentales.
 
-documentación
-link del repositorio backend.
+<a href="https://www.notion.so/Fundaci-n-Social-Crecer-090f7f491cf045288143008d7dfe548f?pvs=4"><b>Documentación y explicación del código a detalle</b></a>
+
+
+<a href="https://github.com/ElPardo16/proyecto-final-fsc-backend"><b>Repositorio Backend</b></a>
 
 ## Despliegue e instrucciones de uso.
 
 - Haz clic en el enlace de despliegue proporcionado por el desarrollador del proyecto.
 
 - Una vez que se carga la página, se te pedirá que inicies sesión como administrador. Proporciona las credenciales de inicio de sesión para acceder al panel de administración.
+   <img src="img/login.png" width="400">
+- Una vez que hayas iniciado sesión, podrás acceder al panel de gestión de usuarios. En esta sección, puedes filtrar a los colaboradores por nombre, identificación o buscar personas específicas. Además, puedes ordenar a los colaboradores según diferentes criterios, lo que facilita la gestión de grandes cantidades de ellos.
 
-- Una vez que hayas iniciado sesión, podrás acceder al panel de gestión de usuarios. En esta sección, puedes filtrar a los usuarios por nombre, identificación o buscar personas específicas. Además, puedes ordenar a los usuarios según diferentes criterios, lo que facilita la gestión de grandes cantidades de usuarios.
+   <img src="img/principal.png" width="400" >
 
-- Puedes importar y exportar la tabla de usuarios en formato Excel, lo que es especialmente útil para cargar o descargar grandes cantidades de información de usuarios en una sola operación.
+- Puedes importar y exportar la tabla de usuarios en formato Excel, lo que es especialmente útil para cargar o descargar grandes cantidades de información de colaboradores en una sola operación.
 
-- Si necesitas agregar un usuario individualmente, puedes hacerlo utilizando el formulario de registro proporcionado. Una vez que hayas ingresado la información del usuario, este se agregará automáticamente a la tabla de usuarios.
+- Si necesitas agregar un colaborador individualmente, puedes hacerlo utilizando el formulario de registro proporcionado. Una vez que hayas ingresado la información, este se agregará automáticamente a la tabla de colaboradores.
 
-- Si necesitas editar un usuario existente, puedes hacerlo haciendo clic en el botón "Editar" correspondiente al usuario en cuestión. Podrás actualizar la información del usuario y guardar los cambios en la tabla.
+   <img src="img/colaborador.png" width="400" >
+
+- Si necesitas editar un colaborador existente, puedes hacerlo haciendo clic en el botón "Editar" correspondiente al colaborador  en cuestión. Podrás actualizar la información y guardar los cambios en la tabla.
+
+   <img src="img/edit.png" width="400" >
 
 - Si necesitas expedir un certificado laboral para un usuario en particular, puedes hacerlo haciendo clic en el botón "PDF" correspondiente al usuario. El sistema generará automáticamente el certificado laboral en formato PDF, que se puede descargar o enviar por correo electrónico al destinatario.
 
-- Si eres un administrador, también puedes crear nuevos usuarios en el sistema utilizando la opción correspondiente. Además, puedes restablecer las contraseñas de los usuarios en caso de que se olviden o pierdan el acceso a sus cuentas.
+   <img src="img/pdf.png" width="400" >
+- Si eres un administrador, también puedes crear nuevos usuarios en el sistema utilizando la opción correspondiente.
+
+   <img src="img/nuevouser.png" width="400" >
+
+-  Como administrador tambien puedes restablecer las contraseñas de los usuarios en caso de que se olviden o pierdan el acceso a sus cuentas.
+
+   <img src="img/contraseña.png" width="400" >
 
 ## Instrucciones para inicar el proyecto a nivel local
 - Abre una terminal en tu computadora.
@@ -60,7 +76,11 @@ En resumen, los pasos para utilizar un proyecto de Next.js desde GitHub son:
 
  - <b>Estructura de Carpetas Front-end</b>
 
- Se crea una carpeta llamada src que contiene todo el proyecto, ésta se subdivide en 6 archivos:
+
+ Contiene las carpetas por defecto de los proyectos base de nextjs, se eliminan las innecesarias y  crea una carpeta llamada src que contiene todo el proyecto, ésta se subdivide en 6 archivos, dando como resultado la siguiente estructura:
+
+
+ <img src="img/frontend.png" width="300">
 
 1. <u>components:</u>  esta carpeta guarda cada uno de los componentes que conforman el frontend de la página:
 
@@ -94,7 +114,7 @@ En resumen, los pasos para utilizar un proyecto de Next.js desde GitHub son:
 
 3. <u>styles:</u> esta carpeta contiene un archivo globals.scss correspondiente a los estilos globales de la página web.
 
-4. <u>test:</u> contiene un archivo utils.test para realizar las correspondientes pruebas unitarias (testeo) de la página.
+4. <u>test:</u> contiene un archivo Recovery.test para realizar las correspondientes pruebas unitarias (testeo) de la página.
 
 5. <u>utils:</u> en esta carpeta se encuentra un archivo tools que contiene funciones que se usan de forma global en los componentes como el map de la data a utilizar, la lectura y mapeo de los datos del excel, la escritura de un nuevo excel si se quieren exportar los datos actualizados de la tabla.
 
@@ -102,11 +122,13 @@ En resumen, los pasos para utilizar un proyecto de Next.js desde GitHub son:
 
 P.D: se utilizaron variables de entorno para la protección de los datos privados manipulados en la aplicación.
 
-- <b>Estructura de Carpetas Back-end</b>
+-  <b>Estructura de Carpetas Back-end</b>
 
 El back-end del proyecto se encuentra compuesto por 7 carpetas y 3 archivos independientes:
 
-1. <u>controller:</u> esta carpeta contiene los controladores del software, dentro se encuentran 3 archivos:
+<img src="img/backend.png" width="300">
+
+1. <u>controller:</u> esta carpeta contiene los controladores del software, dentro se encuentran 4 archivos:
 
    - cert.js: Este código es parte de un servidor web que utiliza Node.js y se encarga de generar, descargar y mostrar un archivo PDF en la respuesta del servidor.
 
@@ -114,12 +136,34 @@ El back-end del proyecto se encuentra compuesto por 7 carpetas y 3 archivos inde
 
    - user.js: Este código contiene varias funciones para trabajar con usuarios. getUser y deleteUser buscan y eliminan usuarios en la base de datos, respectivamente. saveUser crea un nuevo usuario si el correo electrónico no está registrado en la base de datos.
 
+   - email.js:
+
 2. <u>db:</u> contiene un archivo llamado connection.js la cual es responsable de la conección a la base de datos.
 
-3. <u>models</u>; contiene los esquemas de modelo de la base de datos.
+3. <u>models:</u> contiene los esquemas de modelo de la base de datos.
 
    - collaborator.js: Este código define un esquema de MongoDB  utilizando la biblioteca Mongoose de Node.js. El esquema describe una estructura para un documento que es almacenado en una colección llamada 'Collaborator' y especifica los tipos de datos y propiedades permitidos para cada campo. 
 
    - user.js: Este código utiliza la biblioteca mongoose para definir un esquema de usuario y crear un modelo de usuario en la base de datos. El esquema de usuario define que un usuario debe tener un correo electrónico y una contraseña, y el campo de role es opcional.
 
-4. 
+4. <u>routes:</u> Contiene las rutas que se emplean en el proyecto y contiene 4 archivos:
+
+   - cert.js: este código define las rutas para descargar, generar y obtener un PDF en la aplicación utilizando Express.js.
+
+   - collaborator.js: este código define las rutas para obtener, editar, guardar, actualizar y eliminar colaboradores en la aplicación utilizando Express.js.
+
+   - email.js: define una ruta para enviar correos electrónicos en la aplicación utilizando Express.js.
+
+   - user.js: este código define rutas para registrar, iniciar sesión, obtener, actualizar y eliminar usuarios en la aplicación.
+
+5. <u>test:</u> esta carpeta contiene el testeo de la página.
+   - index.test: Este es un código de prueba que utiliza la librería de pruebas Jest junto con Supertest para probar las funcionalidades de una API web desarrollada con Node.js y Express.Este código de prueba se utiliza para verificar que la API web creada con Node.js y Express funcione correctamente y responda adecuadamente a las solicitudes HTTP.
+
+
+6. <u>.env.local:</u> Contiene las variables de entorno que se requieren para la página desde el backend.
+
+## Explicación de codigo 
+
+<a href="https://www.notion.so/Fundaci-n-Social-Crecer-090f7f491cf045288143008d7dfe548f?pvs=4"><b>Documentación y explicación del código a detalle</b></a>
+
+
