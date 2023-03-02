@@ -1,5 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { MdPersonAdd, MdClose } from "react-icons/md";
+import Swal from "sweetalert2";
 
 export default function Recovery() {
   const {
@@ -12,13 +14,25 @@ export default function Recovery() {
   password.current = watch("password", "");
 
   const onSubmit = (data) => {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Contraseña Restablecida Satisfactoriamente',
+      showConfirmButton: false,
+      timer: 2500
+    })
     console.log(data);
   };
 
   return (
-    <>
+    <> <div className="container">
+      <div className="restCont">
+        <MdPersonAdd size={30} />
+        <h3>Restablecer Contraseña</h3>
+      </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="pss">
+
+          <div className="login-input">
             {/* <label htmlFor="password"> Nueva contraseña</label> */}
             <input
               type="password"
@@ -33,8 +47,7 @@ export default function Recovery() {
               <span>La contraseña debe tener al menos 8 caracteres</span>
             )}
           </div>
-
-          <div className="pss">
+          <div className="login-input">
             {/* <label htmlFor="password2">Confirmar Contraseña:</label> */}
             <input
               type="password"
@@ -53,15 +66,11 @@ export default function Recovery() {
               <span>{errors.password2.message}</span>
             )}
           </div>
-
-          <div className="bpss">
-            <button type="submit">Cambiar</button>
-            <button type="submit">
-              Cancelar
-            </button>
+          <div className="bp">
+            <button type="submit" className="btn submit">Enviar</button>
           </div>
         </form>
-     
+      </div>
     </>
   );
 }

@@ -77,10 +77,6 @@ export default function FormCollb() {
     }
   };
 
-  
-  
-
-
   function calculate_age(e) {
     const dob = e.target.value
     const fecha = new Date (dob) 
