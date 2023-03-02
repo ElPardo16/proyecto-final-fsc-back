@@ -106,6 +106,14 @@ export default function FormCollab({ enviar = true, person, closeM }) {
             console.log(json);
         } catch (error) {
             console.log(error);
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'Algo paso...',
+              text: "Revisa tu conexion a internet",
+              showConfirmButton: false,
+              timer: 2500
+            })
         }
         Swal.fire({
             position: "center",

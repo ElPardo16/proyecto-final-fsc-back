@@ -2,7 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { MdPersonAdd, MdClose } from "react-icons/md";
 import Swal from "sweetalert2";
-import jwt from 'jsonwebtoken'
 import axios from 'axios'
 import { useRouter } from "next/router";
 
@@ -22,25 +21,32 @@ export default function Recovery() {
   const { token } = router.query
 
   const onSubmit = async (data) => {
-    await axios.post('http://localhost:5000/api/verify', {
-      token,
-      data
-    })
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Contraseña Restablecida Satisfactoriamente',
-      showConfirmButton: false,
-      timer: 2500
-    })
-  };
+    try {
+      await axios.post('http://localhost:5000/api/verify', {
+        token,
+        data
+      })
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Contraseña Restablecida Satisfactoriamente',
+        showConfirmButton: false,
+        timer: 2500
+      })
+      setTimeout(_ => void router.push("/"),500)
+    } catch (error) {
+      console.log(error)
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Algo paso...',
+        text: "Revisa tu conexion a internet",
+        showConfirmButton: false,
+        timer: 2500
+      })
+    }
 
-  // const verify = async () => {
-  //   await axios.post('http://localhost:5000/api/verify', {
-  //     token, 
-  //     password:password.current
-  //   })
-  // }
+  };
 
   return (
     <> <div className="container adminps">

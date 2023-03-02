@@ -35,16 +35,28 @@ export default function SendRecovery({ isOpen, onRequestClose }) {
     }, []);
 
     const reestablecer = async (id) => {
-        const dataos = {id}
-        await axios.post('http://localhost:5000/api/change',dataos)
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Link enviado",
-            showConfirmButton: false,
-            timer: 2500,
-          });
-        onRequestClose()
+        const dataos = { id }
+        try {
+            await axios.post('http://localhost:5000/api/change', dataos)
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Link enviado",
+                showConfirmButton: false,
+                timer: 2500,
+            });
+            onRequestClose()
+        } catch (error) {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Algo paso...',
+                text: "Revisa tu conexion a internet",
+                showConfirmButton: false,
+                timer: 2500
+            })
+        }
+
     }
 
     return (
@@ -60,15 +72,15 @@ export default function SendRecovery({ isOpen, onRequestClose }) {
                         <p>Enviar LInk</p>
 
                     </div>
-                    
-                        {users.map(user => (
-                            <div>
-                                <span key={user._id}>{user.email}</span>
-                                <button className="btn submit"
+
+                    {users.map(user => (
+                        <div>
+                            <span key={user._id}>{user.email}</span>
+                            <button className="btn submit"
                                 onClick={() => reestablecer(user._id)}
-                                ><RiRotateLockFill /></button>
-                            </div>
-                        ))}
+                            ><RiRotateLockFill /></button>
+                        </div>
+                    ))}
                 </div>
             </div>
         </Modal>

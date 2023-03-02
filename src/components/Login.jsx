@@ -14,8 +14,7 @@ export default function Login() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
-    // const {email, password} = data
+    // console.log(data);
     try {
       const res = await fetch("http://127.0.0.1:5000/api/login", {
         method: "POST",
@@ -64,6 +63,14 @@ export default function Login() {
 
     } catch (error) {
       console.log(error);
+	  Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Algo paso...',
+        text: "Revisa tu conexion a internet",
+        showConfirmButton: false,
+        timer: 2500
+      })
     }
   };
 
