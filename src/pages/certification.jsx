@@ -22,8 +22,6 @@ export default function Certification({ data }) {
 
   const enviarEmail = async () => {
 
-    console.log(postEmail)
-
     Swal.fire({
       position: 'center',
       icon: 'success',

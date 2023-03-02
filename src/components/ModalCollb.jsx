@@ -1,5 +1,5 @@
 import { MdPersonAdd, MdClose } from "react-icons/md";
-import FormCollb from "./FormCollab";
+import FormCollab from "./FormCollab";
 
 
 export default function ModalCollb({ onClose }) {
@@ -12,8 +12,7 @@ export default function ModalCollb({ onClose }) {
         <h2>Agregar colaborador</h2>
       </header>
       <div onClick={onClose}><MdClose size={30} className="close-modal" /></div>
-      <FormCollb />
+      <FormCollab closeM={onClose}/>
     </div>
-
   )
 }

@@ -114,8 +114,10 @@ export default function Login() {
           {errors.password && <span>{errors.password.message}</span>}
         </div>
 
-        <button className="btn submit">Ingresar</button>
-      </form>
-    </div>
-  );
+				<button className="btn submit">Ingresar</button>
+
+				<p onClick={sendRecovery}>Recuperar Contraseña <br/>(solo administradores)</p>
+			</form>
+		</div>
+	);
 }

@@ -1,3 +1,4 @@
+import moment from "moment/moment"
 import { readFile, utils, writeFile } from "xlsx"
 
 export async function getData() {
@@ -40,7 +41,7 @@ export async function readDB(file) {
             contract: item['TIPO DE CONTRATO'],
             modality: item['MODALIDAD'],
             campus: item['LUGAR DE TRABAJO'],
-            birthdate: item['FECHA DE NACIMIENTO'],
+            birthdate: moment(new Date(Date.UTC(0, 0, item['FECHA DE NACIMIENTO']))).format('DD/MM/YYYY'),
             position: item['CARGO'],
             state: item['ESTADO'],
             email: item['CORREO ELECTRÓNICO'],
@@ -49,7 +50,7 @@ export async function readDB(file) {
             OYL: item['CONSECUTIVO OYL'],
             ICBF: item['# CONTRATO ICBF '],
             gen: item['GENERO'],
-            dateECedula: item['FECHA EXPEDICIÓN CEDULA'],
+            dateECedula: moment(new Date(Date.UTC(0, 0, item['FECHA EXPEDICIÓN CEDULA']))).format('DD/MM/YYYY'),
             locality: item['LOCALIDAD'],
             neighborhood: item['BARRIO'],
             adress: item['DIRECCIÓN DE DOMICILIO'],
@@ -57,10 +58,10 @@ export async function readDB(file) {
             telS: item['TELEFONO SECUNDARIO'],
             salaryL: item['SALARIO EN LETRAS'],
             salaryN: item['SALARIO EN VALOR'],
-            dateIICBF: item['FECHA DE INICIO ICBF'], // REVISAR QUE ESTA REPETIDA 
-            dateIFSC: item['FECHA DE INICIO ICBF'],
-            newDateI: item['NUEVA FECHA DE INICIO'],
-            dateR: item['FECHA DE RETIRO'],
+            dateIICBF: moment(new Date(Date.UTC(0, 0, item['FECHA DE INICIO ICBF']))).format('DD/MM/YYYY'), // REVISAR QUE ESTA REPETIDA 
+            dateIFSC: moment(new Date(Date.UTC(0, 0, item['FECHA DE INICIO ICBF']))).format('DD/MM/YYYY'),
+            newDateI: moment(new Date(Date.UTC(0, 0, item['NUEVA FECHA DE INICIO']))).format('DD/MM/YYYY'),
+            dateR: moment(new Date(Date.UTC(0, 0, item['FECHA DE RETIRO']))).format('DD/MM/YYYY'),
             EPS: item['EPS'],
             FDP: item['FONDO DE PENSIONES'],
             ARL: item['ARL'],

@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { display } from "@mui/system";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdOutlineFileUpload } from "react-icons/md";
 import Swal from "sweetalert2";
 import { readDB } from "../utils/tools";
 
-export default function FormCollb() {
+export default function FormCollab({ enviar = true, person, closeM }) {
+
+
+  const router = useRouter()
+
   const [drag, setDrag] = useState(false);
   const toggleDrag = (e) => {
     e.preventDefault();
@@ -28,14 +34,31 @@ export default function FormCollb() {
       timer: 2500,
     });
     //cerrar modal
+    closeM()
+    router.reload(window.location.pathname)
   };
   const dropFile = async (e) => {
     e.stopPropagation();
     e.preventDefault();
     const file = e.dataTransfer.files[0];
+    Swal.fire({
+      position: "center",
+      title: "Cargando",
+      showConfirmButton: false,
+    });
     const data = await file.arrayBuffer();
     readDB(data);
     setDrag(!drag);
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Cargado Satisfactoriamente",
+      showConfirmButton: false,
+      timer: 2500,
+    });
+    //cerrar modal
+    closeM()
+    router.reload(window.location.pathname)
   };
 
   const onDragOver = (e) => {
@@ -46,45 +69,52 @@ export default function FormCollb() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  
+  } = useForm(person &&
+  {
+    values: person
+  }
+  );
+
+
+
+
 
   const onSubmit = async (data) => {
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Cargado Satisfactoriamente',
-      showConfirmButton: false,
-      timer: 2500
-    })
-    console.log(data);
-    console.log(Object.keys(data).length);
-   
     try {
-      const res = await fetch("http://localhost:5000/api/collaborator", {
-        method: "POST",
+      const res = await fetch(`http://localhost:5000/api/collaborator/${person?._id ?? ''}`, {
+        method: person ? "PUT" : "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
-     
+
       const json = await res.json();
-    
+
       console.log(json);
     } catch (error) {
       console.log(error);
     }
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Cargado Satisfactoriamente",
+      showConfirmButton: false,
+      timer: 2500,
+    });
+    //cerrar modal
+    closeM()
+    router.reload(window.location.pathname)
   };
 
   function calculate_age(e) {
     const dob = e.target.value
-    const fecha = new Date (dob) 
+    const fecha = new Date(dob)
     const diff_ms = Date.now() - fecha.getTime();
-    const age_dt = new Date(diff_ms); 
-  
-    age.value = Math.abs(age_dt.getUTCFullYear()  - 1970);
-}
+    const age_dt = new Date(diff_ms);
+
+    age.value = Math.abs(age_dt.getUTCFullYear() - 1970);
+  }
   const nombresEps = [
     "ALIANSALUD",
     "SALUD TOTAL S.A. E.P.S",
@@ -195,23 +225,23 @@ export default function FormCollb() {
   ];
 
   const nombreArl = [
-'A.R.L. Seguros de Vida Colpatria S.A.',
-'Compañía de Seguros Bolívar S.A.',
-'Seguros de Vida Aurora',
-'ARP Alfa',
-'Liberty Seguros de Vida S.A.',
-'Positiva Compañía de Seguros',
-'Colmena Riesgos Profesionales',
-'ARL Sura',
-'La Equidad Seguros de Vida',
-'Mapfre Colombia Vida Seguros S.A',
+    'A.R.L. Seguros de Vida Colpatria S.A.',
+    'Compañía de Seguros Bolívar S.A.',
+    'Seguros de Vida Aurora',
+    'ARP Alfa',
+    'Liberty Seguros de Vida S.A.',
+    'Positiva Compañía de Seguros',
+    'Colmena Riesgos Profesionales',
+    'ARL Sura',
+    'La Equidad Seguros de Vida',
+    'Mapfre Colombia Vida Seguros S.A',
 
   ];
 
 
 
   return (
-    <div className="add-c">
+    <div className={`add-c ${enviar ? '' : 'hf'}`}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="add-i">
           <label htmlFor="doc">Documento</label>
@@ -353,9 +383,9 @@ export default function FormCollb() {
             id="nac"
             name="birthdate"
             type="date"
-            placeholder="Fecha de Nacimiento"    
+            placeholder="Fecha de Nacimiento"
             {...register("birthdate", {
-              onChange:calculate_age,
+              onChange: calculate_age,
               required: {
                 value: true,
                 maxLength: 48,
@@ -394,7 +424,7 @@ export default function FormCollb() {
           {errors.age && <span>{errors.age.message}</span>}
         </div>
 
-        
+
 
         <div className="add-i">
           <label htmlFor="contract">Tipo de Contrato</label>
@@ -736,7 +766,7 @@ export default function FormCollb() {
             placeholder="EPS"
           >
             {nombresEps.map((nombreEps) => (
-              <option value={nombreEps}>{nombreEps}</option>
+              <option key={nombreEps} value={nombreEps}>{nombreEps}</option>
             ))}
           </select>
         </div>
@@ -744,8 +774,8 @@ export default function FormCollb() {
         <div className="add-i">
           <label htmlFor="FDP">Fondo De Pensiones</label>
           <select {...register("FDP")} id="FDP" name="FDP" placeholder="FDP">
-          {nombrePension.map((nombrePension) => (
-              <option value={nombrePension}>{nombrePension}</option>
+            {nombrePension.map((nombrePension) => (
+              <option key={nombrePension} value={nombrePension}>{nombrePension}</option>
             ))}
           </select>
         </div>
@@ -753,8 +783,8 @@ export default function FormCollb() {
         <div className="add-i">
           <label htmlFor="arl">ARL</label>
           <select {...register("ARL")} id="arl" name="ARL" placeholder="ARL">
-          {nombreArl.map((nombreArl) => (
-              <option value={nombreArl}>{nombreArl}</option>
+            {nombreArl.map((nombreArl) => (
+              <option key={nombreArl} value={nombreArl}>{nombreArl}</option>
             ))}
           </select>
         </div>
@@ -769,7 +799,7 @@ export default function FormCollb() {
           />
         </div>
 
-        <input className="submit btn" type="submit" />
+        <input className="submit btn" type="submit" value={enviar ? 'Agregar' : 'Editar'} />
       </form>
 
       <div className="file">

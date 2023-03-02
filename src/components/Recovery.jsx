@@ -2,6 +2,11 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { MdPersonAdd, MdClose } from "react-icons/md";
 import Swal from "sweetalert2";
+import jwt from 'jsonwebtoken'
+import axios from 'axios'
+import { useRouter } from "next/router";
+
+
 
 export default function Recovery() {
   const {
@@ -12,8 +17,15 @@ export default function Recovery() {
   } = useForm();
   const password = React.useRef({});
   password.current = watch("password", "");
+    
+  const router = useRouter()
+  const { token } = router.query
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    await axios.post('http://localhost:5000/api/verify', {
+      token, 
+      data
+    })
     Swal.fire({
       position: 'center',
       icon: 'success',
@@ -21,8 +33,14 @@ export default function Recovery() {
       showConfirmButton: false,
       timer: 2500
     })
-    console.log(data);
   };
+
+  // const verify = async () => {
+  //   await axios.post('http://localhost:5000/api/verify', {
+  //     token, 
+  //     password:password.current
+  //   })
+  // }
 
   return (
     <> <div className="container">
@@ -30,7 +48,7 @@ export default function Recovery() {
         <MdPersonAdd size={30} />
         <h3>Restablecer Contraseña</h3>
       </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form name="recovery" onSubmit={handleSubmit(onSubmit)}>
 
           <div className="login-input">
             {/* <label htmlFor="password"> Nueva contraseña</label> */}
