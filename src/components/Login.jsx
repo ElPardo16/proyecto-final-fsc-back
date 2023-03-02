@@ -116,7 +116,7 @@ export default function Login() {
 
 				<button className="btn submit">Ingresar</button>
 
-				<p onClick={sendRecovery}>Recuperar Contraseña <br/>(solo administradores)</p>
+				<p /* onClick={sendRecovery} */>Recuperar Contraseña <br/>(solo administradores)</p>
 			</form>
 		</div>
 	);

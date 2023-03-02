@@ -75,8 +75,17 @@ export default function FormCollab({ enviar = true, person, closeM }) {
   }
   );
 
-
-
+  function confirmEdit(data) {
+    Swal.fire({
+      position: "center",
+      icon: "info",
+      title: "Desea confirmar los cambios?",
+      showCancelButton: true,
+      confirmButtonText: "Si",
+    }).then(res => {
+      onSubmit(data)
+    })
+  }
 
 
   const onSubmit = async (data) => {
@@ -242,7 +251,7 @@ export default function FormCollab({ enviar = true, person, closeM }) {
 
   return (
     <div className={`add-c ${enviar ? '' : 'hf'}`}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(confirmEdit)}>
         <div className="add-i">
           <label htmlFor="doc">Documento</label>
           <input
