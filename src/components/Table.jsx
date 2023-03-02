@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { MdMode, MdPictureAsPdf } from 'react-icons/md';
 import Modal from "react-modal";
 import EditCollab from "./EditCollab"
+import Swal from 'sweetalert2';
 
 
 
@@ -156,6 +157,11 @@ export default function Table({ people, dataUser }) {
                   <div>
                     {dataUser.role === "admin" && <MdMode size={40} onClick={() => {setdivar(params.row.original.id); openModal()}} />}
                      <MdPictureAsPdf size={40} onClick={async _ => {
+                        Swal.fire({
+                           position: "center",
+                           title: "Generando Certificacion...",
+                           showConfirmButton: false,
+                       });
                         try {
                            const json = await fetch('https://proyecto-final-fsc-backend.vercel.app/api/cert', {
                               method: 'POST',

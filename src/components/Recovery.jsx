@@ -21,6 +21,11 @@ export default function Recovery() {
   const { token } = router.query
 
   const onSubmit = async (data) => {
+    Swal.fire({
+      position: "center",
+      title: "Cargando",
+      showConfirmButton: false,
+    });
     try {
       await axios.post('https://proyecto-final-fsc-backend.vercel.app/api/verify', {
         token,
@@ -33,7 +38,7 @@ export default function Recovery() {
         showConfirmButton: false,
         timer: 2500
       })
-      setTimeout(_ => void router.push("/"),500)
+      setTimeout(_ => void router.push("/"), 500)
     } catch (error) {
       console.log(error)
       Swal.fire({

@@ -35,7 +35,7 @@ export default function FormCollab({ enviar = true, person, closeM }) {
         });
         //cerrar modal
         closeM()
-        router.reload(window.location.pathname)
+        setTimeout(_ => {router.reload(window.location.pathname)},700)
     };
     const dropFile = async (e) => {
         e.stopPropagation();
@@ -58,7 +58,7 @@ export default function FormCollab({ enviar = true, person, closeM }) {
         });
         //cerrar modal
         closeM()
-        router.reload(window.location.pathname)
+        setTimeout(_ => {router.reload(window.location.pathname)},700)
     };
 
     const onDragOver = (e) => {
@@ -124,7 +124,7 @@ export default function FormCollab({ enviar = true, person, closeM }) {
         });
         //cerrar modal
         closeM()
-        router.reload(window.location.pathname)
+        setTimeout(_ => {router.reload(window.location.pathname)},700)
     };
 
     function calculate_age(e) {
@@ -679,7 +679,6 @@ export default function FormCollab({ enviar = true, person, closeM }) {
                         type="number"
                         placeholder="Telefono Secundario "
                         {...register("telS", {
-                            required: true,
                             // pattern: /^\d{10}$/i,
                         })}
                     />
@@ -814,7 +813,7 @@ export default function FormCollab({ enviar = true, person, closeM }) {
                         rows={5}
                         id="obs"
                         name="obs"
-                        {...register("obs", { required: true })}
+                        {...register("obs")}
                     />
                 </div>
 

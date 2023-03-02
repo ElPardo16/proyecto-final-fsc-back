@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 import { MdArrowDropDown } from "react-icons/md";
 import AddUser from '../components/AddUser'
 import SendRecovery from './SendRecovery'
@@ -30,6 +30,7 @@ export default function Header({ data }) {
          <nav>
             <div>{email} <MdArrowDropDown size={20} /></div>
             <ul>
+               <li onClick={_ => {router.push("/dashboard")}}>Dashboard</li>
                {role === "admin" && <><li onClick={() => handleModalOpen('modalUser')}>Crear usuario</li>
                   <li onClick={() => handleModalOpen('modalPassword')}>Cambiar contraseñas</li></>}
                <li onClick={logout}>Cerrar sesión</li>

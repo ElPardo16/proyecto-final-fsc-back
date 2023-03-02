@@ -15,6 +15,11 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     // console.log(data);
+	Swal.fire({
+		position: "center",
+		title: "Cargando",
+		showConfirmButton: false,
+	});
     try {
       const res = await fetch("https://proyecto-final-fsc-backend.vercel.app/api/login", {
         method: "POST",

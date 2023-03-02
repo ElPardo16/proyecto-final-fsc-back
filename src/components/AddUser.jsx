@@ -32,7 +32,11 @@ export default function AddUser({ isOpen, onRequestClose }) {
   };
 
   const onSubmit = async (data) => {
-
+    Swal.fire({
+      position: "center",
+      title: "Cargando",
+      showConfirmButton: false,
+    });
     try {
       const res = await fetch("https://proyecto-final-fsc-backend.vercel.app/api/user", {
         method: "POST",

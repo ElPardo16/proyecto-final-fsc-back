@@ -1,10 +1,11 @@
+import { useRouter } from 'next/router';
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import Swal from "sweetalert2";
 
 
 export default function Adminps() {
-
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -12,11 +13,16 @@ export default function Adminps() {
   } = useForm();
 
   const onSubmit = async (data) => {
+    Swal.fire({
+      position: "center",
+      title: "Cargando",
+      showConfirmButton: false,
+    });
     try {
       const res = await fetch('https://proyecto-final-fsc-backend.vercel.app/api/recovadmin', {
         method: 'POST',
         headers: {
-          'Content-Type':'application/json'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
       })
@@ -29,7 +35,8 @@ export default function Adminps() {
           showConfirmButton: false,
           timer: 2500,
         });
-      }else if(res.status === 401){
+        setTimeout(_ => { router.reload(window.location.pathname) }, 700)
+      } else if (res.status === 401) {
         Swal.fire({
           position: "center",
           icon: "error",
@@ -48,7 +55,7 @@ export default function Adminps() {
   return (
     <div className='container adminps'>
       <form onSubmit={handleSubmit(onSubmit)}>
-      <h2>Reestablecer contraseña de adminitrador</h2>
+        <h2>Reestablecer contraseña de adminitrador</h2>
         <div className="login-input">
           <input
             type="text"

@@ -36,6 +36,11 @@ export default function SendRecovery({ isOpen, onRequestClose }) {
 
     const reestablecer = async (id) => {
         const dataos = { id }
+        Swal.fire({
+            position: "center",
+            title: "Cargando",
+            showConfirmButton: false,
+        });
         try {
             await axios.post('https://proyecto-final-fsc-backend.vercel.app/api/change', dataos)
             Swal.fire({
