@@ -4,7 +4,7 @@ import MaterialReactTable from 'material-react-table';
 import { useRouter } from 'next/router';
 import { MdMode, MdPictureAsPdf } from 'react-icons/md';
 import Modal from "react-modal";
-import EditCollab from './Editcollab';
+import EditCollab from "./EditCollab"
 
 
 

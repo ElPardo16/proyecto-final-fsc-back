@@ -12,8 +12,6 @@ $txt-s: rgba(0, 0, 0, 0.7);
    font-family: "Poppins", sans-serif;
 }
 
-
-
 .btn {
    padding: 10px 20px;
    border: none;
@@ -56,21 +54,21 @@ header {
    background-color: $bg;
 
    h1 {
-      font-size: clamp(1rem, 2vw,1.5rem );
+      font-size: clamp(1rem, 2vw, 1.5rem);
    }
 
    nav {
       position: relative;
       margin-left: auto;
       align-self: stretch;
-      font-size: clamp(1.2rem, 2vw,1.4rem );
+      font-size: clamp(1.2rem, 2vw, 1.4rem);
 
       &:hover ul {
          transform: scaleY(1);
       }
 
       div {
-         font-size: clamp(.9rem, 2vw,1.3rem );
+         font-size: clamp(0.9rem, 2vw, 1.3rem);
          padding-left: 40px;
          display: flex;
          align-items: center;
@@ -156,7 +154,6 @@ header {
 
 .ReactModal__Overlay {
    z-index: 50;
-
 }
 
 .ReactModal__Content {
@@ -214,7 +211,7 @@ header {
    }
 
    .file {
-      position:relative;
+      position: relative;
       display: grid;
       /* border: 2px solid;
       border-radius: 10px; */
@@ -234,13 +231,13 @@ header {
          border-style: dashed;
          background-color: $submit;
          svg {
-           color: white;
+            color: white;
          }
-       }
+      }
 
       label {
          position: absolute;
-        //  background-color: #aa3d3d;
+         //  background-color: #aa3d3d;
          inset: 0;
          margin: auto;
          cursor: pointer;
@@ -391,7 +388,7 @@ header {
       place-items: center;
       cursor: pointer;
       justify-content: center;
-      
+
       &:hover {
          background-color: $bg;
          outline: 1px solid black;
@@ -440,14 +437,14 @@ header {
       display: flex;
       flex-direction: column;
       gap: 3rem;
-      form{
+      form {
          display: grid;
          gap: 40px;
-         .formEmail{
+         .formEmail {
             display: grid;
             gap: 20px;
          }
-         button{
+         button {
             height: 50px;
          }
       }
@@ -473,10 +470,10 @@ header {
    }
 
    button {
-      background-color: #18006C;
+      background-color: #18006c;
    }
 
-   input{
+   input {
       width: 340px;
       border-radius: 10px;
       padding-left: 20px;
@@ -494,7 +491,7 @@ header {
       display: flex;
       gap: 20px;
       justify-content: center;
-      svg{
+      svg {
          cursor: pointer;
       }
    }
@@ -516,45 +513,53 @@ header {
 
 //-----------Media Queries -----
 @media (min-width: 320px) and (max-width: 1000px) {
-   .add-c{
+   .add-c {
       padding: 10px;
       grid: none;
    }
-   .certification{
+   .certification {
       flex-wrap: wrap;
       gap: 100px;
    }
 }
-@media (min-width: 320px) and (max-width: 700px) {
+@media (max-width: 700px) {
    header {
-   justify-content: space-between;
-   padding: 0;
-      nav ul{
-            width: 100vw;
+      justify-content: space-between;
+      padding: 0;
+      nav ul {
+         width: 100vw;
       }
    }
-   .filters{
+   .filters {
       justify-content: center;
-      }
-   .ReactModal__Content.ReactModal__Content--after-open{
-      width: 98vw !important;
    }
    .certification iframe {
       height: 60vh;
       width: 400px;
    }
-}
-   @media (min-width: 320px) and (max-width: 440px) {
-   header h1{
-      display: none;
+   .add-c form {
+      grid-template-columns: repeat(2, 1fr);
    }
-    nav div{
-      gap: 0;
-      padding: 0;
-    }
-   .certification  button, .certification a{
+}
+@media (min-width: 320px) and (max-width: 480px) {
+   header {
+      display: grid;
+      grid-template-columns: 30% 60%;
+      height: 110px;
+      nav div{
+         padding-left: 40vw;
+        
+      }
+   }
+  .filters .search{
+   grid: 1fr/150px min-content;
+  }
+   .certification button,
+   .certification a {
       width: 90%;
       margin: auto;
-      
    }
+   .ReactModal__Content.ReactModal__Content--after-open {
+      width: 100vw !important;
    }
+}
