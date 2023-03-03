@@ -58,7 +58,7 @@ export default function FormCollab({ enviar = true, person, closeM }) {
         });
         //cerrar modal
         closeM()
-        setTimeout(_ => {router.reload(window.location.pathname)},1000)
+        setTimeout(_ => {router.reload(window.location.pathname)},1500)
     };
 
     const onDragOver = (e) => {

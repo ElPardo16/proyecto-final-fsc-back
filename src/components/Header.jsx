@@ -20,7 +20,7 @@ export default function Header({ data }) {
          position: "center",
          title: "Cargando",
          showConfirmButton: false,
-         timer: 500
+         timer: 800
      });
       router.push("/dashboard")
    }
