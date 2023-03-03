@@ -5,6 +5,7 @@ import { MdAdd, MdOutlinePostAdd }from "react-icons/md";
 import { useState, useRef } from "react";
 import ModalCollb from "../../components/ModalCollb";
 import Modal from "react-modal";
+import Swal from "sweetalert2";
 
 Modal.setAppElement("#__next");
 export default function Dashboard({ data, people }) {
@@ -71,6 +72,12 @@ export default function Dashboard({ data, people }) {
     filterData();
   };
   const genExcel = _ => {
+    Swal.fire({
+      position: "center",
+      title: "Cargando",
+      showConfirmButton: false,
+      timer: 800
+  });
    writeExcel(listPeople)
   }
   const [modalIsOpen, setModalIsOpen] = useState(false);

@@ -19,6 +19,7 @@ export default function Login() {
 		position: "center",
 		title: "Cargando",
 		showConfirmButton: false,
+		timer:700
 	});
     try {
       const res = await fetch("https://proyecto-final-fsc-backend.vercel.app/api/login", {

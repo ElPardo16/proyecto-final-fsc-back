@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react'
 import { MdArrowDropDown } from "react-icons/md";
+import Swal from 'sweetalert2';
 import AddUser from '../components/AddUser'
 import SendRecovery from './SendRecovery'
 
@@ -13,6 +14,15 @@ export default function Header({ data }) {
    const logout = _ => {
       Cookies.remove("token")
       router.push("/")
+   }
+   const goDash = _ => {
+      Swal.fire({
+         position: "center",
+         title: "Cargando",
+         showConfirmButton: false,
+         timer: 500
+     });
+      router.push("/dashboard")
    }
    const [modalToShow, setModalToShow] = useState(null);
 
@@ -30,7 +40,7 @@ export default function Header({ data }) {
          <nav>
             <div>{email} <MdArrowDropDown size={20} /></div>
             <ul>
-               <li onClick={_ => {router.push("/dashboard")}}>Dashboard</li>
+               <li onClick={goDash}>Dashboard</li>
                {role === "admin" && <><li onClick={() => handleModalOpen('modalUser')}>Crear usuario</li>
                   <li onClick={() => handleModalOpen('modalPassword')}>Cambiar contraseñas</li></>}
                <li onClick={logout}>Cerrar sesión</li>

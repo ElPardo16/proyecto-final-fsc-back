@@ -43,7 +43,7 @@ export default function FormCollab({ enviar = true, person, closeM }) {
         const file = e.dataTransfer.files[0];
         Swal.fire({
             position: "center",
-            title: "Cargando",
+            title: "Cargando...",
             showConfirmButton: false,
         });
         const data = await file.arrayBuffer();
@@ -58,7 +58,7 @@ export default function FormCollab({ enviar = true, person, closeM }) {
         });
         //cerrar modal
         closeM()
-        setTimeout(_ => {router.reload(window.location.pathname)},700)
+        setTimeout(_ => {router.reload(window.location.pathname)},1000)
     };
 
     const onDragOver = (e) => {

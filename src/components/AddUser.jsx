@@ -46,18 +46,28 @@ export default function AddUser({ isOpen, onRequestClose }) {
         body: JSON.stringify(data),
       });
       const json = await res.json();
+      if (res.status === 200) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Nuevo usuario creado Satisfactoriamente",
+          showConfirmButton: false,
+          timer: 2500,
+        });
+        onRequestClose()
+      }else if(res.status === 401){
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: json.error,
+          showConfirmButton: false,
+          timer: 2500,
+        });
+      }
       console.log(json);
     } catch (error) {
       console.log(error);
     }
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Nuevo usuario creado Satisfactoriamente",
-      showConfirmButton: false,
-      timer: 2500,
-    });
-    onRequestClose()
   };
 
   return (

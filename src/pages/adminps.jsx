@@ -17,6 +17,7 @@ export default function Adminps() {
       position: "center",
       title: "Cargando",
       showConfirmButton: false,
+      timer: 500
     });
     try {
       const res = await fetch('https://proyecto-final-fsc-backend.vercel.app/api/recovadmin', {

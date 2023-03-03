@@ -25,6 +25,7 @@ export default function Recovery() {
       position: "center",
       title: "Cargando",
       showConfirmButton: false,
+      timer: 500
     });
     try {
       await axios.post('https://proyecto-final-fsc-backend.vercel.app/api/verify', {

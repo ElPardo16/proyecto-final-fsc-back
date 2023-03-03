@@ -161,6 +161,7 @@ export default function Table({ people, dataUser }) {
                            position: "center",
                            title: "Generando Certificacion...",
                            showConfirmButton: false,
+                           timer: 900
                        });
                         try {
                            const json = await fetch('https://proyecto-final-fsc-backend.vercel.app/api/cert', {
