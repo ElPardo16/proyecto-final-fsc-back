@@ -6,7 +6,7 @@
 
 El siguiente proyecto fue desarrollado con Next.js, una popular librería de React, con el objetivo de simplificar la gestión de usuarios y la expedición de certificados laborales en formato PDF. El proyecto permite la carga masiva de usuarios a través de un archivo Excel, lo que reduce significativamente el tiempo necesario para ingresar la información manualmente. Además, una vez que los usuarios están registrados en el sistema, se puede expedir automáticamente el certificado laboral en formato PDF, el cual se puede enviar al correo electrónico de la persona de forma rápida y sencilla. Este proyecto ofrece una solución eficiente para la gestión de usuarios y la expedición de certificados laborales, lo que resulta especialmente útil en entornos donde la rapidez y la precisión son fundamentales.
 
-<a href="https://www.notion.so/Fundaci-n-Social-Crecer-090f7f491cf045288143008d7dfe548f?pvs=4"><b>Documentación y explicación del código a detalle</b></a>
+<a href="https://woozy-flock-295.notion.site/Fundaci-n-Social-Crecer-090f7f491cf045288143008d7dfe548f"><b>Documentación y explicación del código a detalle</b></a>
 
 
 <a href="https://github.com/ElPardo16/proyecto-final-fsc-backend"><b>Repositorio Backend</b></a>
@@ -138,7 +138,7 @@ El back-end del proyecto se encuentra compuesto por 7 carpetas y 3 archivos inde
 
    - email.js:
 
-2. <u>db:</u> contiene un archivo llamado connection.js la cual es responsable de la conección a la base de datos.
+2. <u>db:</u> contiene un archivo llamado connection.js la cual es responsable de la conexión a la base de datos.
 
 3. <u>models:</u> contiene los esquemas de modelo de la base de datos.
 
@@ -164,6 +164,6 @@ El back-end del proyecto se encuentra compuesto por 7 carpetas y 3 archivos inde
 
 ## Explicación de codigo 
 
-<a href="https://www.notion.so/Fundaci-n-Social-Crecer-090f7f491cf045288143008d7dfe548f?pvs=4"><b>Documentación y explicación del código a detalle</b></a>
+<a href="https://woozy-flock-295.notion.site/Fundaci-n-Social-Crecer-090f7f491cf045288143008d7dfe548f"><b>Documentación y explicación del código a detalle</b></a>
 
 
